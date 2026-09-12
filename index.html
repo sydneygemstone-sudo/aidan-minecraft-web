@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Minecraft Web - 纯粹建造与自由探索</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%235e8e32'/><rect y='60' width='100' height='40' fill='%23866043'/></svg>">
+</head>
+<body>
+  <!-- 3D Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <!-- Screen Crosshair -->
+  <div id="crosshair"></div>
+
+  <!-- Top Navigation Toolbar -->
+  <div id="top-bar">
+    <div class="brand">
+      <span class="icon">⛏️</span>
+      <span class="title">MINECRAFT</span>
+      <span class="tag">WEB 3D</span>
+    </div>
+
+    <div id="mode-indicator" class="badge flying">
+      🕊️ <b>飞行建造模式</b> (按 F 切换)
+    </div>
+
+    <div class="btn-group">
+      <button id="btn-touch-toggle" class="mc-btn highlight" title="开启/关闭 iPad 触屏虚拟按键">📱 触屏按键</button>
+      <button id="btn-save" class="mc-btn" title="保存到本地浏览器缓存">💾 保存</button>
+      <button id="btn-export" class="mc-btn" title="导出为 .json 存档文件分享">📂 导出存档</button>
+      <label class="mc-btn import-btn" title="从文件导入建筑存档">
+        📥 导入存档
+        <input type="file" id="import-file-input" accept=".json" style="display:none;" />
+      </label>
+      <button id="btn-presets" class="mc-btn highlight" title="一键生成城堡、别墅、树屋、金字塔">🏛️ 预设建筑</button>
+      <button id="btn-inventory" class="mc-btn" title="打开所有方块库 (快捷键 E)">🎒 方块库 (E)</button>
+      <button id="btn-reset-world" class="mc-btn danger" title="重置地图世界">🧹 重建世界</button>
+      <button id="btn-help" class="mc-btn" title="操作指南">❓ 帮助</button>
+    </div>
+  </div>
+
+  <!-- Left Top Stats Overlay -->
+  <div id="stats-overlay">
+    <div><b>FPS:</b> -- | <b>模式:</b> 初始化</div>
+    <div><b>XYZ:</b> 0 / 20 / 0</div>
+    <div><b>朝向:</b> --</div>
+    <div><b>自定义方块:</b> 0</div>
+  </div>
+
+  <!-- Toast Notifications -->
+  <div id="toast-notification" class="toast-box"></div>
+
+  <!-- iPad / Touch Screen Virtual Controls Overlay -->
+  <div id="touch-controls" class="touch-container hidden">
+    <!-- Left D-Pad -->
+    <div class="touch-dpad">
+      <button id="touch-up" class="touch-btn dpad-up">▲</button>
+      <div class="dpad-middle">
+        <button id="touch-left" class="touch-btn dpad-left">◀</button>
+        <div class="dpad-center">●</div>
+        <button id="touch-right" class="touch-btn dpad-right">▶</button>
+      </div>
+      <button id="touch-down" class="touch-btn dpad-down">▼</button>
+    </div>
+
+    <!-- Right Action Buttons -->
+    <div class="touch-actions">
+      <div class="touch-row">
+        <button id="touch-fly" class="touch-btn action-btn sm" title="切换飞行模式">🔄 飞行</button>
+        <button id="touch-inv" class="touch-btn action-btn sm" title="打开方块库">🎒 库</button>
+      </div>
+      <div class="touch-row">
+        <button id="touch-jump" class="touch-btn action-btn" title="跳跃/上升">🕊️ 上升</button>
+        <button id="touch-descend" class="touch-btn action-btn" title="下降">⬇️ 下降</button>
+      </div>
+      <div class="touch-row main-actions">
+        <button id="touch-break" class="touch-btn action-btn primary-break" title="挖掘破坏方块">⛏️ 挖掘</button>
+        <button id="touch-place" class="touch-btn action-btn primary-place" title="放置方块">🧱 放置</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Hotbar HUD -->
+  <div id="hud-bottom">
+    <div id="active-block-name">草方块 (Grass Block)</div>
+    <div id="hotbar" class="hotbar-wrapper"></div>
+  </div>
+
+  <!-- Pause / Click to Play Overlay -->
+  <div id="pause-overlay">
+    <div class="pause-card">
+      <h1 class="logo-title">MINECRAFT WEB</h1>
+      <p class="logo-subtitle">纯粹建造与分享 · 支持 iPad 触屏 · 支持无鼠标纯键盘</p>
+
+      <div class="controls-guide">
+        <h3 class="guide-title">⌨️ 纯键盘操控模式（无需鼠标）：</h3>
+        <div class="guide-grid">
+          <div class="guide-item"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span>前后左右移动</span></div>
+          <div class="guide-item"><kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd><span><b>方向键旋转视角</b> (上下抬头/左右看)</span></div>
+          <div class="guide-item"><kbd>Z</kbd> 或 <kbd>J</kbd> / <kbd>Delete</kbd><span><b>挖掘破坏方块</b> (自带碎屑粒子)</span></div>
+          <div class="guide-item"><kbd>X</kbd> 或 <kbd>K</kbd> / <kbd>Enter</kbd><span><b>放置方块</b> (按当前选中的方块)</span></div>
+          <div class="guide-item"><kbd>空格 Space</kbd><span>跳跃 / 向上升起</span></div>
+          <div class="guide-item"><kbd>Shift</kbd> 或 <kbd>C</kbd><span>向下降落</span></div>
+          <div class="guide-item"><kbd>F</kbd><span>切换无重力飞行 / 走路重力模式</span></div>
+          <div class="guide-item"><kbd>[</kbd> 与 <kbd>]</kbd> / <kbd>1-9</kbd><span>切换物品栏方块</span></div>
+          <div class="guide-item"><kbd>C</kbd> 或 <kbd>Q</kbd><span>吸管取方块 (选取视线对准的方块)</span></div>
+          <div class="guide-item"><kbd>E</kbd><span>打开无限创造模式物品库</span></div>
+        </div>
+
+        <div class="touch-hint">
+          📱 <b>iPad / 触屏提示</b>：左下角虚拟十字键移动，右侧屏幕空白处滑动手指旋转视角，右下角 ⛏️ 挖掘与 🧱 放置按钮直接盖楼！
+        </div>
+      </div>
+
+      <div class="play-btn-group">
+        <button id="btn-play-keyboard" class="mc-play-btn keyboard-btn">⌨️ 纯键盘开始 (免鼠标)</button>
+        <button id="btn-play" class="mc-play-btn">🖱️ 键鼠模式 (锁定光标)</button>
+        <button id="btn-play-touch" class="mc-play-btn touch-btn-start">📱 iPad 触屏开始</button>
+      </div>
+      <div class="hint-text">随时按 <b>ESC</b> 键可临时释放光标或暂停</div>
+    </div>
+  </div>
+
+  <!-- Creative Inventory Modal -->
+  <div id="inventory-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>🎒 创造模式无限方块库</h2>
+        <button class="modal-close">×</button>
+      </div>
+      <p class="modal-desc">点击任意方块，即可直接装备到当前快捷栏槽位：</p>
+      <div id="inventory-grid" class="inventory-grid"></div>
+    </div>
+  </div>
+
+  <!-- Presets Modal -->
+  <div id="preset-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>🏛️ 一键生成经典建筑</h2>
+        <button class="modal-close">×</button>
+      </div>
+      <p class="modal-desc">在您当前所在位置附近瞬间拔地而起一座壮丽奇观：</p>
+      <div class="preset-cards">
+        <div class="preset-card btn-preset-item" data-preset="castle">
+          <div class="preset-icon">🏰</div>
+          <div class="preset-info">
+            <h3>中世纪要塞城堡</h3>
+            <p>4座坚固角楼塔楼、石砌垛口城墙、中心主堡、荧石信标与开阔内院</p>
+          </div>
+        </div>
+
+        <div class="preset-card btn-preset-item" data-preset="villa">
+          <div class="preset-icon">🏡</div>
+          <div class="preset-info">
+            <h3>现代海景别墅</h3>
+            <p>极简现代框架、全景通透玻璃幕墙、观景露台木质甲板与无边戏水池</p>
+          </div>
+        </div>
+
+        <div class="preset-card btn-preset-item" data-preset="treehouse">
+          <div class="preset-icon">🌳</div>
+          <div class="preset-info">
+            <h3>巨型空中树屋</h3>
+            <p>参天中空古树、环形木质天梯、悬空生活平台与云端繁茂树冠小屋</p>
+          </div>
+        </div>
+
+        <div class="preset-card btn-preset-item" data-preset="pyramid">
+          <div class="preset-icon">🔺</div>
+          <div class="preset-info">
+            <h3>黄金法老金字塔</h3>
+            <p>宏伟阶梯砂岩古迹、纯金与钻石顶端聚能塔，深处藏有神秘密室与宝藏</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Help Modal -->
+  <div id="help-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2>❓ 操作与游玩指南</h2>
+        <button class="modal-close">×</button>
+      </div>
+      <div class="help-content">
+        <h3>⌨️ 纯键盘模式（无鼠标）</h3>
+        <ul>
+          <li><b>移动</b>: <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 移动位置，<kbd>Ctrl</kbd> 极速冲刺。</li>
+          <li><b>旋转视角</b>: 方向键 <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> 平滑抬头、低头、左转、右转。</li>
+          <li><b>挖掘与放置</b>: 按 <kbd>Z</kbd> 或 <kbd>J</kbd> 破坏方块；按 <kbd>X</kbd> 或 <kbd>K</kbd> 或 <kbd>Enter</kbd> 放置方块。</li>
+          <li><b>自由飞行</b>: 按 <kbd>F</kbd> 开关飞行，<kbd>Space</kbd> 升空，<kbd>Shift</kbd> / <kbd>C</kbd> 降落。</li>
+          <li><b>物品栏与吸管</b>: <kbd>[</kbd> 与 <kbd>]</kbd> 循环切方块，<kbd>C</kbd> 或 <kbd>Q</kbd> 吸取当前方块，<kbd>E</kbd> 开启全部方块库。</li>
+        </ul>
+        <h3>📱 iPad 触屏操作</h3>
+        <ul>
+          <li><b>屏幕左下角</b>: 虚拟十字键控制人物前后左右移动。</li>
+          <li><b>屏幕右侧滑动</b>: 在右半屏任意位置滑动手指，旋转视角。</li>
+          <li><b>屏幕右下角</b>: 包含 ⛏️ 挖掘、🧱 放置、🕊️ 上升、⬇️ 下降、背包等便捷圆形大按钮。</li>
+          <li><b>快捷栏</b>: 屏幕底部方块栏可直接用手指轻点切换。</li>
+        </ul>
+        <h3>💾 存档与分享</h3>
+        <ul>
+          <li><b>快速保存</b>: 点击顶部「💾 保存」，游戏会把所有修改记录在浏览器本地。</li>
+          <li><b>导出建筑</b>: 点击「📂 导出存档」，下载 <code>.json</code> 格式的世界存档文件。</li>
+          <li><b>导入建筑</b>: 点击「📥 导入存档」，选择之前导出的文件即可恢复您的壮丽建筑！</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

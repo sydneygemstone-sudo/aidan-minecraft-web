@@ -1,0 +1,27 @@
+{
+  "name": "minecraft-web",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Aidan Gao's First Project: Minecraft Web 3D sandbox game with free flight, building, iPad touch controls, and save export/import.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server.js",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "node server.js"
+  },
+  "keywords": [
+    "minecraft",
+    "threejs",
+    "voxel",
+    "webgl",
+    "aidan-gao"
+  ],
+  "author": "Aidan Gao",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.186.0",
+    "vite": "^8.3.0"
+  }
+}
