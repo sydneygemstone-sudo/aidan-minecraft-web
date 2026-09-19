@@ -203,6 +203,94 @@ class SoundManager {
     osc.start(t);
     osc.stop(t + 0.04);
   }
+
+  // ---- Magic & fishing sounds ----------------------------------------
+
+  // Shared helper: filtered noise burst
+  playNoise(duration, filterType, startFreq, endFreq, volume) {
+    if (this.isMuted) return;
+    this.ensureContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const noise = this.ctx.createBufferSource();
+    noise.buffer = this.createNoiseBuffer(duration);
+
+    const filter = this.ctx.createBiquadFilter();
+    filter.type = filterType;
+    filter.frequency.setValueAtTime(startFreq, t);
+    filter.frequency.exponentialRampToValueAtTime(Math.max(40, endFreq), t + duration);
+
+    const gain = this.ctx.createGain();
+    gain.gain.setValueAtTime(volume, t);
+    gain.gain.exponentialRampToValueAtTime(0.005, t + duration);
+
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    noise.start(t);
+    noise.stop(t + duration);
+  }
+
+  playTone(type, startFreq, endFreq, duration, volume) {
+    if (this.isMuted) return;
+    this.ensureContext();
+    if (!this.ctx) return;
+
+    const t = this.ctx.currentTime;
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(startFreq, t);
+    osc.frequency.exponentialRampToValueAtTime(Math.max(20, endFreq), t + duration);
+
+    gain.gain.setValueAtTime(volume, t);
+    gain.gain.exponentialRampToValueAtTime(0.005, t + duration);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start(t);
+    osc.stop(t + duration);
+  }
+
+  // Whoosh when the fireball leaves the hand
+  playFireCastSound() {
+    this.playNoise(0.3, 'bandpass', 1800, 320, 0.22);
+    this.playTone('sawtooth', 420, 120, 0.22, 0.09);
+  }
+
+  // Dull thump when the fireball lands
+  playFireHitSound() {
+    this.playNoise(0.35, 'lowpass', 900, 120, 0.26);
+    this.playTone('triangle', 160, 50, 0.3, 0.12);
+  }
+
+  // Fire meets water: the classic hiss
+  playSteamSound() {
+    this.playNoise(0.6, 'highpass', 2200, 5200, 0.2);
+  }
+
+  // Grabbing a fish
+  playCatchSound() {
+    this.playTone('sine', 520, 980, 0.13, 0.16);
+    this.playNoise(0.14, 'bandpass', 900, 2400, 0.1);
+  }
+
+  // Raw fish turning into cooked fish
+  playCookSound() {
+    this.playNoise(0.45, 'highpass', 1600, 3600, 0.16);
+    this.playTone('sine', 300, 760, 0.3, 0.13);
+  }
+
+  // Eating the cooked fish
+  playEatSound() {
+    this.playTone('square', 240, 170, 0.09, 0.1);
+    setTimeout(() => this.playTone('square', 260, 180, 0.09, 0.1), 120);
+    setTimeout(() => this.playTone('sine', 620, 1050, 0.18, 0.14), 260);
+  }
 }
 
 export const sounds = new SoundManager();

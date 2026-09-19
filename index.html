@@ -49,6 +49,24 @@
     <div><b>自定义方块:</b> 0</div>
   </div>
 
+  <!-- Magic World Bar: fire magic, fish, food, health -->
+  <div id="magic-bar">
+    <div class="magic-title">✨ 魔法世界 Magic World</div>
+    <button id="magic-cast" class="magic-btn">🔥 火焰魔法 <kbd>R</kbd></button>
+    <div id="magic-raw" class="magic-item empty">
+      🐟 生鱼 Raw Fish <b id="magic-raw-count">0</b>
+      <span class="magic-hint">点一下 / 按 G 放到地上</span>
+    </div>
+    <div id="magic-cooked" class="magic-item empty">
+      🍢 烤鱼 Cooked Fish <b id="magic-cooked-count">0</b>
+      <span class="magic-hint">点一下 / 按 V 吃掉</span>
+    </div>
+    <div class="magic-health">
+      <span class="heart">❤️</span>
+      <span class="health-track"><i id="health-fill"></i></span>
+    </div>
+  </div>
+
   <!-- Toast Notifications -->
   <div id="toast-notification" class="toast-box"></div>
 
@@ -75,9 +93,14 @@
         <button id="touch-jump" class="touch-btn action-btn" title="跳跃/上升">🕊️ 上升</button>
         <button id="touch-descend" class="touch-btn action-btn" title="下降">⬇️ 下降</button>
       </div>
+      <div class="touch-row">
+        <button id="touch-drop-fish" class="touch-btn action-btn sm" title="把生鱼放到地上">🐟 放鱼</button>
+        <button id="touch-eat-fish" class="touch-btn action-btn sm" title="吃掉烤鱼">😋 吃鱼</button>
+      </div>
       <div class="touch-row main-actions">
         <button id="touch-break" class="touch-btn action-btn primary-break" title="挖掘破坏方块">⛏️ 挖掘</button>
         <button id="touch-place" class="touch-btn action-btn primary-place" title="放置方块">🧱 放置</button>
+        <button id="touch-fire" class="touch-btn action-btn primary-fire" title="释放火焰魔法">🔥 火焰</button>
       </div>
     </div>
   </div>
@@ -187,6 +210,15 @@
         <button class="modal-close">×</button>
       </div>
       <div class="help-content">
+        <h3>✨ 魔法世界玩法（新！）</h3>
+        <ul>
+          <li><b>🔥 火焰魔法</b>: 按 <kbd>R</kbd>（或点右上角「🔥 火焰魔法」按钮）发射火球。火球会<b>真的点燃</b>木头、树叶和草地，烧完方块就消失了。</li>
+          <li><b>💨 火碰水</b>: 火球打进水里会熄灭，并冒出一大团白色蒸汽。</li>
+          <li><b>🐟 抓鱼</b>: 水里有会游动的彩色小鱼。飞过去<b>碰到它</b>，或者对准它按挖掘键，就能抓到一条「生鱼」。</li>
+          <li><b>🍢 烤鱼</b>: 按 <kbd>G</kbd> 把生鱼放到地上，再用 <kbd>R</kbd> 火焰魔法打它 —— 生鱼就会变成金黄色的「烤鱼」。走过去自动捡起来。</li>
+          <li><b>😋 吃鱼</b>: 按 <kbd>V</kbd> 吃掉烤鱼，恢复生命值并获得 8 秒飞行加速。</li>
+          <li><b>⚠️ 小心</b>: 站在自己放的火里会掉血，右上角有红色血条。</li>
+        </ul>
         <h3>⌨️ 纯键盘模式（无鼠标）</h3>
         <ul>
           <li><b>移动</b>: <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> 移动位置，<kbd>Ctrl</kbd> 极速冲刺。</li>
@@ -199,7 +231,7 @@
         <ul>
           <li><b>屏幕左下角</b>: 虚拟十字键控制人物前后左右移动。</li>
           <li><b>屏幕右侧滑动</b>: 在右半屏任意位置滑动手指，旋转视角。</li>
-          <li><b>屏幕右下角</b>: 包含 ⛏️ 挖掘、🧱 放置、🕊️ 上升、⬇️ 下降、背包等便捷圆形大按钮。</li>
+          <li><b>屏幕右下角</b>: 包含 ⛏️ 挖掘、🧱 放置、🔥 火焰、🐟 放鱼、😋 吃鱼、🕊️ 上升、⬇️ 下降、背包等便捷大按钮。</li>
           <li><b>快捷栏</b>: 屏幕底部方块栏可直接用手指轻点切换。</li>
         </ul>
         <h3>💾 存档与分享</h3>

@@ -1,3 +1,4 @@
+import * as THREE from 'three';
 import { BLOCKS, BLOCK_DEFS, ALL_BLOCKS, DEFAULT_HOTBAR } from './blocks.js';
 import { sounds } from './audio.js';
 
@@ -14,9 +15,15 @@ export class UIManager {
     this.isInventoryOpen = false;
     this.isPresetOpen = false;
 
+    // Magic World items (not blocks — they live in their own little bar)
+    this.items = { raw_fish: 0, cooked_fish: 0 };
+    this.magic = null; // MagicSystem, wired from main.js
+    this.creatures = null; // Creatures, wired from main.js
+
     this.initDOM();
     this.setupListeners();
     this.setupTouchControls();
+    this.setupMagicBar();
     this.renderHotbar();
     this.renderInventory();
 
@@ -55,6 +62,10 @@ export class UIManager {
     this.presetModal = document.getElementById('preset-modal');
     this.helpModal = document.getElementById('help-modal');
     this.touchContainer = document.getElementById('touch-controls');
+    this.magicBar = document.getElementById('magic-bar');
+    this.rawCountEl = document.getElementById('magic-raw-count');
+    this.cookedCountEl = document.getElementById('magic-cooked-count');
+    this.healthFillEl = document.getElementById('health-fill');
 
     // Auto show touch controls on touch devices (iPad / phones)
     if (this.player.isTouchDevice && this.touchContainer) {
@@ -72,6 +83,14 @@ export class UIManager {
         if (num >= 1 && num <= 9) {
           this.selectSlot(num - 1);
         }
+      } else if (e.code === 'KeyR') {
+        // 🔥 Fire magic
+        this.castFireMagic();
+      } else if (e.code === 'KeyG') {
+        // Put a raw fish on the ground so you can roast it
+        this.dropRawFish();
+      } else if (e.code === 'KeyV') {
+        this.eatCookedFish();
       } else if (e.code === 'KeyE') {
         if (!this.player.isLocked && this.isInventoryOpen) {
           this.closeInventory();
@@ -168,6 +187,98 @@ export class UIManager {
     bindTouchButton('touch-place', () => { this.player.placeBlock(this.getSelectedBlockId()); });
     bindTouchButton('touch-fly', () => { this.player.toggleFlyMode(); });
     bindTouchButton('touch-inv', () => { this.openInventory(); });
+
+    // Magic World touch buttons
+    bindTouchButton('touch-fire', () => { this.castFireMagic(); });
+    bindTouchButton('touch-drop-fish', () => { this.dropRawFish(); });
+    bindTouchButton('touch-eat-fish', () => { this.eatCookedFish(); });
+  }
+
+  // ---- Magic World: fire, fish, food -----------------------------------
+
+  setupMagicBar() {
+    document.getElementById('magic-cast')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.castFireMagic();
+    });
+    document.getElementById('magic-raw')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.dropRawFish();
+    });
+    document.getElementById('magic-cooked')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.eatCookedFish();
+    });
+    this.renderMagicBar();
+  }
+
+  castFireMagic() {
+    if (!this.magic) return;
+    if (!this.player.isPlaying) this.player.setPlaying(true);
+    sounds.ensureContext();
+    this.magic.cast();
+  }
+
+  addItem(kind, n = 1) {
+    if (!(kind in this.items)) return;
+    this.items[kind] += n;
+    this.renderMagicBar();
+  }
+
+  dropRawFish() {
+    if (!this.creatures) return;
+    if (this.items.raw_fish <= 0) {
+      this.showNotification('你还没有生鱼 — 先游到水里碰一条鱼把它抓住！');
+      return;
+    }
+    this.items.raw_fish--;
+    this.renderMagicBar();
+
+    // Drop it a couple of blocks in front of the player so a fireball can reach it
+    const dir = this.player.camera.getWorldDirection(new THREE.Vector3());
+    dir.y = 0;
+    if (dir.lengthSq() < 0.001) dir.set(0, 0, -1);
+    dir.normalize();
+
+    const px = this.player.position.x + dir.x * 2.5;
+    const pz = this.player.position.z + dir.z * 2.5;
+    const py = this.player.position.y + 0.6;
+
+    this.creatures.addDrop(px, py, pz, 'raw_fish');
+    sounds.playClickSound();
+    this.showNotification('🐟 生鱼已放在地上 — 现在对它放火焰魔法 (R) 烤熟它！');
+  }
+
+  eatCookedFish() {
+    if (this.items.cooked_fish <= 0) {
+      this.showNotification('还没有烤鱼 — 把生鱼放地上 (G)，再用火焰魔法烤它！');
+      return;
+    }
+    this.items.cooked_fish--;
+    this.renderMagicBar();
+
+    this.player.health = Math.min(this.player.maxHealth, this.player.health + 6);
+    this.player.boostTimer = 8.0;
+    sounds.playEatSound();
+    this.showNotification('😋 Yum! 烤鱼真好吃！生命恢复 + 飞行加速 8 秒！');
+  }
+
+  renderMagicBar() {
+    if (this.rawCountEl) this.rawCountEl.textContent = this.items.raw_fish;
+    if (this.cookedCountEl) this.cookedCountEl.textContent = this.items.cooked_fish;
+
+    document.getElementById('magic-raw')?.classList.toggle('empty', this.items.raw_fish <= 0);
+    document.getElementById('magic-cooked')?.classList.toggle('empty', this.items.cooked_fish <= 0);
+  }
+
+  renderHealth() {
+    if (!this.healthFillEl) return;
+    const pct = Math.max(0, Math.min(1, this.player.health / this.player.maxHealth)) * 100;
+    this.healthFillEl.style.width = `${pct}%`;
+    this.healthFillEl.classList.toggle('low', pct <= 35);
   }
 
   pickBlock() {
@@ -289,6 +400,7 @@ export class UIManager {
   }
 
   updateStats(fps) {
+    this.renderHealth();
     if (!this.statsOverlay) return;
     const p = this.player.position;
     const yawDeg = ((this.player.yaw * 180 / Math.PI) % 360 + 360) % 360;

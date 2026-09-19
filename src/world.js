@@ -30,6 +30,19 @@ export class World {
       side: THREE.FrontSide
     });
 
+    // Water gets its own, clearer material so you can actually see the fish
+    // swimming below the surface (the shared transparent material is too opaque).
+    this.waterMaterial = new THREE.MeshLambertMaterial({
+      map: atlasTexture,
+      color: 0x7fb2ff, // keep the water reading blue even at lower opacity
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.68,
+      alphaTest: 0.05,
+      depthWrite: true,
+      side: THREE.FrontSide
+    });
+
     // Chunks map: "cx,cz" -> Chunk
     this.chunks = new Map();
     // Raycasting meshes collection
@@ -209,6 +222,7 @@ export class Chunk {
     this.blocks = new Uint8Array(CHUNK_SIZE * CHUNK_HEIGHT * CHUNK_SIZE);
     this.opaqueMesh = null;
     this.transMesh = null;
+    this.waterMesh = null;
     this.dirty = false;
   }
 
@@ -327,6 +341,7 @@ export class Chunk {
 
     const opaque = { positions: [], normals: [], uvs: [], colors: [], indices: [] };
     const trans = { positions: [], normals: [], uvs: [], colors: [], indices: [] };
+    const water = { positions: [], normals: [], uvs: [], colors: [], indices: [] };
 
     const world = this.world;
     const originX = this.cx * CHUNK_SIZE;
@@ -352,7 +367,8 @@ export class Chunk {
           if (!def) continue;
 
           const isTrans = !!def.transparent;
-          const targetBuffer = isTrans ? trans : opaque;
+          const isWater = blockId === BLOCKS.WATER;
+          const targetBuffer = isWater ? water : (isTrans ? trans : opaque);
 
           const gx = originX + lx;
           const gy = ly;
@@ -534,6 +550,20 @@ export class Chunk {
       this.world.meshList.push(this.transMesh);
     }
 
+    // Build Water Mesh (clearer material — you can see the fish through it)
+    if (water.positions.length > 0) {
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.Float32BufferAttribute(water.positions, 3));
+      geo.setAttribute('normal', new THREE.Float32BufferAttribute(water.normals, 3));
+      geo.setAttribute('uv', new THREE.Float32BufferAttribute(water.uvs, 2));
+      geo.setAttribute('color', new THREE.Float32BufferAttribute(water.colors, 3));
+      geo.setIndex(water.indices);
+      this.waterMesh = new THREE.Mesh(geo, this.world.waterMaterial);
+      this.waterMesh.chunk = this;
+      this.world.scene.add(this.waterMesh);
+      this.world.meshList.push(this.waterMesh);
+    }
+
     this.dirty = false;
   }
 
@@ -606,6 +636,13 @@ export class Chunk {
       const idx = this.world.meshList.indexOf(this.transMesh);
       if (idx !== -1) this.world.meshList.splice(idx, 1);
       this.transMesh = null;
+    }
+    if (this.waterMesh) {
+      this.world.scene.remove(this.waterMesh);
+      this.waterMesh.geometry.dispose();
+      const idx = this.world.meshList.indexOf(this.waterMesh);
+      if (idx !== -1) this.world.meshList.splice(idx, 1);
+      this.waterMesh = null;
     }
   }
 }

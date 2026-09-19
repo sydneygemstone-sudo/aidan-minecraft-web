@@ -22,6 +22,13 @@ export class Player {
     this.sprintMultiplier = 1.8;
     this.lookSpeed = 2.4; // Keyboard rotation speed (radians per sec)
     this.onGround = false;
+
+    // Magic World: health + the speed boost you get from eating cooked fish
+    this.maxHealth = 20;
+    this.health = 20;
+    this.boostTimer = 0;
+    this.creatures = null; // wired from main.js so 挖掘 can also catch a fish
+
     this.playerHeight = 1.8;
     this.eyeHeight = 1.62;
     this.playerRadius = 0.3;
@@ -354,7 +361,13 @@ export class Player {
     const forward = new THREE.Vector3(0, 0, -1).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.yaw);
     const right = new THREE.Vector3(1, 0, 0).applyAxisAngle(new THREE.Vector3(0, 1, 0), this.yaw);
 
-    const speed = (this.isFlying ? this.flySpeed : this.walkSpeed) * (this.keys.sprint ? this.sprintMultiplier : 1.0);
+    if (this.boostTimer > 0) this.boostTimer -= delta;
+    const foodBoost = this.boostTimer > 0 ? 1.6 : 1.0;
+
+    const speed =
+      (this.isFlying ? this.flySpeed : this.walkSpeed) *
+      (this.keys.sprint ? this.sprintMultiplier : 1.0) *
+      foodBoost;
 
     if (this.isFlying) {
       // Free Fly Mode
@@ -507,6 +520,9 @@ export class Player {
   }
 
   breakBlock() {
+    // Aiming at a fish and hitting 挖掘 catches it instead of mining
+    if (this.creatures && this.creatures.catchFishByRay(this.camera)) return true;
+
     if (!this.targetBlock) return false;
     const { x, y, z, id } = this.targetBlock;
     if (id === BLOCKS.BEDROCK) return false;
