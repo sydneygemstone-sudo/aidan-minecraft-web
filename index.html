@@ -52,6 +52,7 @@
   <!-- Magic World Bar: fire magic, fish, food, health -->
   <div id="magic-bar">
     <div class="magic-title">✨ 魔法世界 Magic World</div>
+    <div id="magic-time" class="magic-time" title="点一下 / 按 T 立刻切换白天与黑夜">☀️ 白天</div>
     <button id="magic-cast" class="magic-btn">🔥 火焰魔法 <kbd>R</kbd></button>
     <div id="magic-raw" class="magic-item empty">
       🐟 生鱼 Raw Fish <b id="magic-raw-count">0</b>
@@ -61,10 +62,19 @@
       🍢 烤鱼 Cooked Fish <b id="magic-cooked-count">0</b>
       <span class="magic-hint">点一下 / 按 V 吃掉</span>
     </div>
+    <div id="magic-meat" class="magic-item empty">
+      🍖 烤肉 Meat <b id="magic-meat-count">0</b>
+      <span class="magic-hint">打怪掉落 · 点一下吃掉</span>
+    </div>
+    <div id="magic-berry" class="magic-item empty">
+      🍓 浆果 Berry <b id="magic-berry-count">0</b>
+      <span class="magic-hint">草地上摘 · 小鸡会跟着你</span>
+    </div>
     <div class="magic-health">
       <span class="heart">❤️</span>
       <span class="health-track"><i id="health-fill"></i></span>
     </div>
+    <div id="magic-kills" class="magic-kills">⚔️ 已打败怪物 0</div>
   </div>
 
   <!-- Toast Notifications -->
@@ -95,7 +105,8 @@
       </div>
       <div class="touch-row">
         <button id="touch-drop-fish" class="touch-btn action-btn sm" title="把生鱼放到地上">🐟 放鱼</button>
-        <button id="touch-eat-fish" class="touch-btn action-btn sm" title="吃掉烤鱼">😋 吃鱼</button>
+        <button id="touch-eat-fish" class="touch-btn action-btn sm" title="吃掉食物回血">😋 吃</button>
+        <button id="touch-time" class="touch-btn action-btn sm" title="切换白天与黑夜">🌗 昼夜</button>
       </div>
       <div class="touch-row main-actions">
         <button id="touch-break" class="touch-btn action-btn primary-break" title="挖掘破坏方块">⛏️ 挖掘</button>
@@ -210,7 +221,19 @@
         <button class="modal-close">×</button>
       </div>
       <div class="help-content">
-        <h3>✨ 魔法世界玩法（新！）</h3>
+        <h3>🌗 日夜交替与怪物（新！）</h3>
+        <ul>
+          <li><b>太阳与月亮</b>: 白天太阳在天上，天黑后太阳落下、<b>月亮升起来</b>，满天星星。一轮白天 + 一轮夜晚大约 4 分钟。</li>
+          <li><b>不想等？</b> 按 <kbd>T</kbd>（或点右上角的时间条 / iPad 的「🌗 昼夜」按钮）立刻切到下一个白天或夜晚。</li>
+          <li><b>👾 夜晚怪物</b>: 天黑后紫色怪物会出现并朝你走过来，碰到你会掉血。用 <kbd>R</kbd> 火焰魔法打它，<b>打两下</b>就没了，还会掉 🍖 烤肉。</li>
+          <li><b>☀️ 天一亮</b>: 剩下的怪物会被阳光烧掉冒烟消失。<b>🐟 鱼和 🐔 小鸡不受影响，永远都在。</b></li>
+        </ul>
+        <h3>🌱 地面上的东西</h3>
+        <ul>
+          <li><b>🍓 浆果丛</b>: 草地上的小绿丛，上面有红果子。走过去或者对准按挖掘键就能摘，摘完过一会儿还会<b>重新长出来</b>。按 <kbd>V</kbd> 吃掉回血。</li>
+          <li><b>🐔 小鸡</b>: 草地上到处走、偶尔跳一下。<b>身上带着浆果的时候，小鸡会跟着你走。</b></li>
+        </ul>
+        <h3>✨ 魔法世界玩法</h3>
         <ul>
           <li><b>🔥 火焰魔法</b>: 按 <kbd>R</kbd>（或点右上角「🔥 火焰魔法」按钮）发射火球。火球会<b>真的点燃</b>木头、树叶和草地，烧完方块就消失了。</li>
           <li><b>💨 火碰水</b>: 火球打进水里会熄灭，并冒出一大团白色蒸汽。</li>

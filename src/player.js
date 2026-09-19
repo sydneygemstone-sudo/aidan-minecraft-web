@@ -520,8 +520,8 @@ export class Player {
   }
 
   breakBlock() {
-    // Aiming at a fish and hitting 挖掘 catches it instead of mining
-    if (this.creatures && this.creatures.catchFishByRay(this.camera)) return true;
+    // Aiming at a fish or a berry bush and hitting 挖掘 harvests it instead of mining
+    if (this.creatures && this.creatures.interactByRay(this.camera)) return true;
 
     if (!this.targetBlock) return false;
     const { x, y, z, id } = this.targetBlock;

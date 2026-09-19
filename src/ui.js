@@ -16,9 +16,11 @@ export class UIManager {
     this.isPresetOpen = false;
 
     // Magic World items (not blocks — they live in their own little bar)
-    this.items = { raw_fish: 0, cooked_fish: 0 };
+    this.items = { raw_fish: 0, cooked_fish: 0, cooked_meat: 0, berry: 0 };
     this.magic = null; // MagicSystem, wired from main.js
     this.creatures = null; // Creatures, wired from main.js
+    this.dayNight = null; // DayNightCycle, wired from main.js
+    this.monsters = null; // Monsters, wired from main.js
 
     this.initDOM();
     this.setupListeners();
@@ -65,7 +67,11 @@ export class UIManager {
     this.magicBar = document.getElementById('magic-bar');
     this.rawCountEl = document.getElementById('magic-raw-count');
     this.cookedCountEl = document.getElementById('magic-cooked-count');
+    this.meatCountEl = document.getElementById('magic-meat-count');
+    this.berryCountEl = document.getElementById('magic-berry-count');
     this.healthFillEl = document.getElementById('health-fill');
+    this.timeEl = document.getElementById('magic-time');
+    this.killsEl = document.getElementById('magic-kills');
 
     // Auto show touch controls on touch devices (iPad / phones)
     if (this.player.isTouchDevice && this.touchContainer) {
@@ -90,7 +96,9 @@ export class UIManager {
         // Put a raw fish on the ground so you can roast it
         this.dropRawFish();
       } else if (e.code === 'KeyV') {
-        this.eatCookedFish();
+        this.eatBestFood();
+      } else if (e.code === 'KeyT') {
+        this.skipTime();
       } else if (e.code === 'KeyE') {
         if (!this.player.isLocked && this.isInventoryOpen) {
           this.closeInventory();
@@ -191,7 +199,8 @@ export class UIManager {
     // Magic World touch buttons
     bindTouchButton('touch-fire', () => { this.castFireMagic(); });
     bindTouchButton('touch-drop-fish', () => { this.dropRawFish(); });
-    bindTouchButton('touch-eat-fish', () => { this.eatCookedFish(); });
+    bindTouchButton('touch-eat-fish', () => { this.eatBestFood(); });
+    bindTouchButton('touch-time', () => { this.skipTime(); });
   }
 
   // ---- Magic World: fire, fish, food -----------------------------------
@@ -212,7 +221,34 @@ export class UIManager {
       e.stopPropagation();
       this.eatCookedFish();
     });
+    document.getElementById('magic-meat')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.eatFood('cooked_meat');
+    });
+    document.getElementById('magic-berry')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.eatFood('berry');
+    });
+    document.getElementById('magic-time')?.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.skipTime();
+    });
     this.renderMagicBar();
+  }
+
+  // Jump straight to the next day or night — no waiting around
+  skipTime() {
+    if (!this.dayNight) return;
+    const night = this.dayNight.skipToNext();
+    sounds.playChimeSound(!night);
+    this.showNotification(
+      night
+        ? '🌙 天黑了！月亮升起来了，小心怪物 — 用 R 火焰魔法打它们'
+        : '☀️ 天亮了！怪物会被阳光烧掉，鱼和小鸡不受影响'
+    );
   }
 
   castFireMagic() {
@@ -253,25 +289,73 @@ export class UIManager {
   }
 
   eatCookedFish() {
-    if (this.items.cooked_fish <= 0) {
-      this.showNotification('还没有烤鱼 — 把生鱼放地上 (G)，再用火焰魔法烤它！');
+    this.eatFood('cooked_fish');
+  }
+
+  // V eats whatever is best in the bag, so Aiden never has to pick
+  eatBestFood() {
+    const order = ['cooked_fish', 'cooked_meat', 'berry'];
+    const pick = order.find((k) => this.items[k] > 0);
+    if (!pick) {
+      this.showNotification('肚子里空空的 — 抓条鱼烤了吃，或者去草地上摘 🍓 浆果');
       return;
     }
-    this.items.cooked_fish--;
+    this.eatFood(pick);
+  }
+
+  eatFood(kind) {
+    const FOOD = {
+      cooked_fish: { heal: 6, boost: 8, msg: '😋 Yum! 烤鱼真好吃！生命恢复 + 飞行加速 8 秒！' },
+      cooked_meat: { heal: 8, boost: 6, msg: '😋 烤肉！生命大幅恢复 + 飞行加速 6 秒！' },
+      berry: { heal: 3, boost: 0, msg: '🍓 酸酸甜甜的浆果，恢复了一点生命值' }
+    };
+    const food = FOOD[kind];
+    if (!food) return;
+
+    if (this.items[kind] <= 0) {
+      const hint = {
+        cooked_fish: '还没有烤鱼 — 把生鱼放地上 (G)，再用火焰魔法烤它！',
+        cooked_meat: '还没有烤肉 — 晚上用火焰魔法打败怪物就会掉落烤肉',
+        berry: '还没有浆果 — 白天去草地上找 🍓 浆果丛，走过去就能摘'
+      };
+      this.showNotification(hint[kind]);
+      return;
+    }
+
+    this.items[kind]--;
     this.renderMagicBar();
 
-    this.player.health = Math.min(this.player.maxHealth, this.player.health + 6);
-    this.player.boostTimer = 8.0;
+    this.player.health = Math.min(this.player.maxHealth, this.player.health + food.heal);
+    if (food.boost > 0) this.player.boostTimer = food.boost;
     sounds.playEatSound();
-    this.showNotification('😋 Yum! 烤鱼真好吃！生命恢复 + 飞行加速 8 秒！');
+    this.showNotification(food.msg);
   }
 
   renderMagicBar() {
     if (this.rawCountEl) this.rawCountEl.textContent = this.items.raw_fish;
     if (this.cookedCountEl) this.cookedCountEl.textContent = this.items.cooked_fish;
+    if (this.meatCountEl) this.meatCountEl.textContent = this.items.cooked_meat;
+    if (this.berryCountEl) this.berryCountEl.textContent = this.items.berry;
 
     document.getElementById('magic-raw')?.classList.toggle('empty', this.items.raw_fish <= 0);
     document.getElementById('magic-cooked')?.classList.toggle('empty', this.items.cooked_fish <= 0);
+    document.getElementById('magic-meat')?.classList.toggle('empty', this.items.cooked_meat <= 0);
+    document.getElementById('magic-berry')?.classList.toggle('empty', this.items.berry <= 0);
+  }
+
+  renderTimeAndKills() {
+    if (this.timeEl && this.dayNight) {
+      const secs = Math.ceil(this.dayNight.secondsToFlip());
+      this.timeEl.textContent = `${this.dayNight.phaseName()} · ${secs}s 后变天`;
+      this.timeEl.classList.toggle('night', this.dayNight.isNight());
+    }
+    if (this.killsEl && this.monsters) {
+      const alive = this.monsters.list.length;
+      this.killsEl.textContent = alive > 0
+        ? `👾 附近怪物 ${alive} · 已打败 ${this.monsters.killCount}`
+        : `⚔️ 已打败怪物 ${this.monsters.killCount}`;
+      this.killsEl.classList.toggle('danger', alive > 0);
+    }
   }
 
   renderHealth() {
@@ -401,6 +485,7 @@ export class UIManager {
 
   updateStats(fps) {
     this.renderHealth();
+    this.renderTimeAndKills();
     if (!this.statsOverlay) return;
     const p = this.player.position;
     const yawDeg = ((this.player.yaw * 180 / Math.PI) % 360 + 360) % 360;

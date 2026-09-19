@@ -8,6 +8,8 @@ import { UIManager } from './ui.js';
 import { sounds } from './audio.js';
 import { MagicSystem } from './magic.js';
 import { Creatures, ITEM_DEFS } from './creatures.js';
+import { DayNightCycle } from './daynight.js';
+import { Monsters } from './monsters.js';
 
 // Setup Three.js Scene, Camera, Renderer
 const scene = new THREE.Scene();
@@ -64,16 +66,34 @@ const spawnZ = 0;
 const spawnY = world.getSurfaceHeight(spawnX, spawnZ) + 2;
 player.position.set(spawnX, spawnY, spawnZ);
 
-// --- Aiden's Magic Block World: fire magic + underwater life ---
+// --- Aiden's Magic Block World: fire magic, life, and a day/night cycle ---
 const creatures = new Creatures(scene, world, particles);
 const magic = new MagicSystem(scene, world, player, particles, creatures);
+const monsters = new Monsters(scene, world, particles, creatures);
+const dayNight = new DayNightCycle(scene, ambientLight, sunLight, cloudMat);
+magic.monsters = monsters;
 player.creatures = creatures;
 
 const storage = new StorageManager(world, player);
 const ui = new UIManager(world, player, storage, icons);
 ui.magic = magic;
 ui.creatures = creatures;
+ui.dayNight = dayNight;
+ui.monsters = monsters;
 magic.ui = ui;
+
+monsters.onSpawnFirst = () => {
+  ui.showNotification('👾 怪物出现了！用 R 火焰魔法打它们（打两下就没了）');
+};
+monsters.onKill = (total) => {
+  ui.showNotification(`⚔️ 打败怪物！掉落了 🍖 烤肉 — 累计 ${total} 只`);
+};
+monsters.onHurtPlayer = (dmg) => {
+  player.health -= dmg;
+  particles.spawnFlameBurst(player.position.x, player.position.y + 0.9, player.position.z, 4, 0.4);
+  ui.showNotification('💥 被怪物打到了！吃东西可以回血 (V)', 'error');
+  if (player.health <= 0) respawnPlayer('你被怪物打倒了！已送回出生点，生命值回满');
+};
 
 creatures.onCatch = (kind) => {
   ui.addItem(kind, 1);
@@ -86,18 +106,37 @@ creatures.onPickup = (kind) => {
 creatures.onCook = () => {
   ui.showNotification('🔥 → 🐟 → 🍢 烤熟啦！走过去捡起来，然后按 V 吃掉');
 };
+creatures.onBerry = () => {
+  ui.addItem('berry', 1);
+  ui.showNotification('🍓 摘到浆果！按 V 可以吃掉回血（小鸡会跟着有浆果的人走）');
+};
+
+function respawnPlayer(message) {
+  player.health = player.maxHealth;
+  const sy = world.getSurfaceHeight(0, 0) + 3;
+  player.position.set(0, sy, 0);
+  player.velocity.set(0, 0, 0);
+  ui.showNotification(message);
+}
 
 function repopulateFish() {
   const n = creatures.spawnFishInWorld(34);
   return n;
 }
+
+function repopulateGroundLife() {
+  return creatures.spawnGroundLifeInWorld(40, 14);
+}
+
 repopulateFish();
+repopulateGroundLife();
 
 // Auto-load saved world if present
 const autoLoad = storage.loadFromLocalStorage();
 if (autoLoad.success) {
-  // The world was rebuilt from the save — put the fish back in the new water
+  // The world was rebuilt from the save — put the fish and ground life back
   repopulateFish();
+  repopulateGroundLife();
   ui.showNotification(`已自动恢复存档 (${autoLoad.count} 个方块)`);
 }
 
@@ -197,10 +236,14 @@ document.getElementById('btn-reset-world')?.addEventListener('click', () => {
     world.initWorld(Math.floor(Math.random() * 99999));
     magic.burning.clear();
     creatures.reset();
+    monsters.clear();
     const fishCount = repopulateFish();
+    const ground = repopulateGroundLife();
     const sy = world.getSurfaceHeight(0, 0) + 2;
     player.position.set(0, sy, 0);
-    ui.showNotification(`新世界生成完成！水里放了 ${fishCount} 条鱼 🐟`);
+    ui.showNotification(
+      `新世界生成完成！🐟 ${fishCount} 条鱼 · 🍓 ${ground.bushes} 丛浆果 · 🐔 ${ground.chickens} 只小鸡`
+    );
     sounds.playClickSound();
   }
 });
@@ -230,7 +273,22 @@ document.querySelectorAll('.modal-close').forEach((btn) => {
 });
 
 // Debug / QA handle so the systems can be poked from the console
-window.__game = { scene, world, player, particles, magic, creatures, ui, storage };
+window.__game = { scene, world, player, particles, magic, creatures, monsters, dayNight, ui, storage };
+
+// Tell the player when the sky flips, so the change never goes unnoticed
+let wasNight = dayNight.isNight();
+
+function announceDayNightFlip() {
+  const night = dayNight.isNight();
+  if (night === wasNight) return;
+  wasNight = night;
+  sounds.playChimeSound(!night);
+  ui.showNotification(
+    night
+      ? '🌙 太阳落山了，月亮升起来 — 怪物要出来了，用 R 火焰魔法打它们！'
+      : '☀️ 太阳升起来了！怪物会被阳光烧掉，🐟 鱼和 🐔 小鸡照常活着'
+  );
+}
 
 let hurtCooldown = 0;
 
@@ -256,11 +314,7 @@ function updateFireDamage(delta) {
   }
 
   if (player.health <= 0) {
-    player.health = player.maxHealth;
-    const sy = world.getSurfaceHeight(0, 0) + 3;
-    player.position.set(0, sy, 0);
-    player.velocity.set(0, 0, 0);
-    ui.showNotification('你被自己的火焰烧到了！已送回出生点，生命值已回满');
+    respawnPlayer('你被自己的火焰烧到了！已送回出生点，生命值已回满');
   }
 }
 
@@ -285,8 +339,11 @@ function animate() {
 
   // Update Game systems
   player.update(delta);
+  dayNight.update(delta, player.position);
+  announceDayNightFlip();
   magic.update(delta);
-  creatures.update(delta, player);
+  creatures.update(delta, player, ui.items.berry > 0);
+  monsters.update(delta, player, dayNight.isDeepNight());
   particles.update(delta);
 
   // Standing inside your own fire hurts — that is what the cooked fish is for

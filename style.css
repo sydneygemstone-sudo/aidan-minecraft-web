@@ -876,6 +876,39 @@ kbd {
   opacity: 0.75;
 }
 
+.magic-time {
+  cursor: pointer;
+  padding: 5px 8px;
+  text-align: center;
+  font-weight: 700;
+  color: #1b1b1b;
+  background: linear-gradient(180deg, #ffe08a 0%, #ffc44d 100%);
+  border: 1px solid #b07d16;
+  border-radius: 4px;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.magic-time.night {
+  color: #dfe6ff;
+  background: linear-gradient(180deg, #33406f 0%, #161d3d 100%);
+  border-color: #6b7bbd;
+}
+
+.magic-kills {
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 11px;
+  color: #cfd6e6;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+}
+
+.magic-kills.danger {
+  color: #ffd7d7;
+  background: rgba(198, 40, 40, 0.45);
+  border: 1px solid #ff6b6b;
+}
+
 .magic-health {
   display: flex;
   align-items: center;
@@ -916,17 +949,31 @@ kbd {
 
 @media (max-width: 900px) {
   #magic-bar {
-    top: auto;
-    bottom: 150px;
-    right: 8px;
-    width: 148px;
-    padding: 6px;
-    font-size: 11px;
-    gap: 5px;
+    top: 58px;
+    bottom: auto;
+    right: 6px;
+    width: 132px;
+    padding: 5px;
+    font-size: 10px;
+    gap: 3px;
   }
   .magic-btn {
-    padding: 7px 4px;
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+  .magic-item {
+    padding: 3px 5px;
+  }
+  .magic-item b {
     font-size: 12px;
+  }
+  .magic-time {
+    padding: 3px 4px;
+    font-size: 10px;
+  }
+  .magic-kills {
+    padding: 2px 4px;
+    font-size: 9px;
   }
   .magic-hint {
     display: none;

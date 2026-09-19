@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { BLOCKS } from './blocks.js';
 import { sounds } from './audio.js';
 import { CHUNK_SIZE, WORLD_CHUNKS_X, WORLD_CHUNKS_Z } from './world.js';
+import { stepOnGround } from './walk.js';
 
 const WATER_LEVEL = 9; // matches Chunk.generateTerrain
 
@@ -10,7 +11,9 @@ const FISH_COLORS = [0xff7a00, 0xffe000, 0xff2f6d, 0x00ffc8, 0xff5ef0, 0xfff3c4]
 
 export const ITEM_DEFS = {
   raw_fish: { name: '生鱼', enName: 'Raw Fish', emoji: '🐟', color: 0xe8806a },
-  cooked_fish: { name: '烤鱼', enName: 'Cooked Fish', emoji: '🍢', color: 0xd9a441 }
+  cooked_fish: { name: '烤鱼', enName: 'Cooked Fish', emoji: '🍢', color: 0xd9a441 },
+  berry: { name: '浆果', enName: 'Berry', emoji: '🍓', color: 0xd8324b },
+  cooked_meat: { name: '烤肉', enName: 'Cooked Meat', emoji: '🍖', color: 0xb5651d }
 };
 
 export class Creatures {
@@ -21,11 +24,14 @@ export class Creatures {
 
     this.fish = [];
     this.drops = [];
+    this.bushes = []; // berry bushes on the grass
+    this.animals = []; // chickens wandering the ground
 
     // Callbacks wired by main.js
     this.onCatch = null; // (kind) => void
     this.onPickup = null; // (kind) => void
     this.onCook = null; // () => void
+    this.onBerry = null; // () => void
 
     this.bodyGeo = new THREE.BoxGeometry(0.8, 0.46, 0.34);
     this.tailGeo = new THREE.BoxGeometry(0.3, 0.42, 0.08);
@@ -33,6 +39,168 @@ export class Creatures {
     this.eyeMat = new THREE.MeshBasicMaterial({ color: 0x101010 });
 
     this.dropGeo = new THREE.BoxGeometry(0.42, 0.22, 0.2);
+
+    // Berry bush pieces
+    this.bushGeo = new THREE.BoxGeometry(0.62, 0.5, 0.62);
+    this.bushMat = new THREE.MeshLambertMaterial({ color: 0x2f6b2a });
+    this.berryGeo = new THREE.BoxGeometry(0.16, 0.16, 0.16);
+    this.berryMat = new THREE.MeshBasicMaterial({ color: 0xff2e4d });
+
+    // Chicken pieces
+    this.chickBodyGeo = new THREE.BoxGeometry(0.5, 0.42, 0.38);
+    this.chickHeadGeo = new THREE.BoxGeometry(0.28, 0.28, 0.28);
+    this.chickBeakGeo = new THREE.BoxGeometry(0.16, 0.1, 0.12);
+    this.chickCombGeo = new THREE.BoxGeometry(0.1, 0.12, 0.18);
+    this.chickLegGeo = new THREE.BoxGeometry(0.08, 0.26, 0.08);
+    this.chickBodyMat = new THREE.MeshLambertMaterial({ color: 0xfaf6ef });
+    this.chickBeakMat = new THREE.MeshLambertMaterial({ color: 0xffb300 });
+    this.chickCombMat = new THREE.MeshLambertMaterial({ color: 0xe53935 });
+  }
+
+  // ---- Berry bushes (ground pickups that grow back) --------------------
+
+  makeBushMesh() {
+    const group = new THREE.Group();
+    const bush = new THREE.Mesh(this.bushGeo, this.bushMat);
+    bush.position.y = 0.25;
+    group.add(bush);
+
+    const berries = [];
+    for (let i = 0; i < 5; i++) {
+      const b = new THREE.Mesh(this.berryGeo, this.berryMat);
+      b.position.set(
+        (Math.random() - 0.5) * 0.5,
+        0.15 + Math.random() * 0.35,
+        (Math.random() - 0.5) * 0.5
+      );
+      group.add(b);
+      berries.push(b);
+    }
+    group.userData.berries = berries;
+    return group;
+  }
+
+  addBush(x, y, z) {
+    const mesh = this.makeBushMesh();
+    mesh.position.set(x, y, z);
+    this.scene.add(mesh);
+    this.bushes.push({ mesh, ripe: true, regrow: 0 });
+  }
+
+  setBushRipe(bush, ripe) {
+    bush.ripe = ripe;
+    for (const b of bush.mesh.userData.berries) b.visible = ripe;
+  }
+
+  pickBush(bush) {
+    if (!bush.ripe) return false;
+    this.setBushRipe(bush, false);
+    bush.regrow = 18; // grows back so Aiden can keep picking
+    const p = bush.mesh.position;
+    this.particles.spawnPuff(p.x, p.y + 0.4, p.z, 8, {
+      colors: [0xff2e4d, 0xff7b8f, 0x2f6b2a],
+      size: 0.5, spread: 0.4, speed: 1.4, rise: 1.6, gravity: 6, life: 0.5
+    });
+    sounds.playCatchSound();
+    if (this.onBerry) this.onBerry();
+    return true;
+  }
+
+  // ---- Chickens (they wander, and follow you if you carry berries) ------
+
+  makeChickenMesh() {
+    const group = new THREE.Group();
+
+    const body = new THREE.Mesh(this.chickBodyGeo, this.chickBodyMat);
+    body.position.y = 0.42;
+    group.add(body);
+
+    const head = new THREE.Mesh(this.chickHeadGeo, this.chickBodyMat);
+    head.position.set(0, 0.74, 0.16);
+    group.add(head);
+
+    const beak = new THREE.Mesh(this.chickBeakGeo, this.chickBeakMat);
+    beak.position.set(0, 0.72, 0.34);
+    group.add(beak);
+
+    const comb = new THREE.Mesh(this.chickCombGeo, this.chickCombMat);
+    comb.position.set(0, 0.9, 0.14);
+    group.add(comb);
+
+    const legL = new THREE.Mesh(this.chickLegGeo, this.chickBeakMat);
+    legL.position.set(-0.12, 0.13, 0);
+    group.add(legL);
+    const legR = new THREE.Mesh(this.chickLegGeo, this.chickBeakMat);
+    legR.position.set(0.12, 0.13, 0);
+    group.add(legR);
+
+    group.userData.legL = legL;
+    group.userData.legR = legR;
+    return group;
+  }
+
+  addChicken(x, y, z) {
+    const mesh = this.makeChickenMesh();
+    mesh.position.set(x, y, z);
+    this.scene.add(mesh);
+
+    const a = Math.random() * Math.PI * 2;
+    this.animals.push({
+      mesh,
+      dir: new THREE.Vector3(Math.cos(a), 0, Math.sin(a)),
+      speed: 0.9 + Math.random() * 0.5,
+      turnTimer: 1 + Math.random() * 3,
+      walk: Math.random() * Math.PI * 2,
+      hopTimer: 2 + Math.random() * 4
+    });
+  }
+
+  // Scatter bushes and chickens across the grass
+  spawnGroundLifeInWorld(bushTarget = 40, chickenTarget = 14) {
+    this.clearGroundLife();
+
+    const halfX = Math.floor(WORLD_CHUNKS_X / 2);
+    const halfZ = Math.floor(WORLD_CHUNKS_Z / 2);
+    const minX = -halfX * CHUNK_SIZE;
+    const maxX = (halfX + 1) * CHUNK_SIZE - 1;
+    const minZ = -halfZ * CHUNK_SIZE;
+    const maxZ = (halfZ + 1) * CHUNK_SIZE - 1;
+
+    const spots = [];
+    for (let x = minX + 1; x < maxX - 1; x += 2) {
+      for (let z = minZ + 1; z < maxZ - 1; z += 2) {
+        const y = this.world.getSurfaceHeight(x, z);
+        if (this.world.getBlock(x, y, z) !== BLOCKS.GRASS) continue;
+        if (this.world.getBlock(x, y + 1, z) !== BLOCKS.AIR) continue; // under a tree
+        spots.push({ x, y, z });
+      }
+    }
+    if (spots.length === 0) return { bushes: 0, chickens: 0 };
+
+    for (let i = spots.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [spots[i], spots[j]] = [spots[j], spots[i]];
+    }
+
+    let idx = 0;
+    const nBush = Math.min(bushTarget, spots.length);
+    for (let i = 0; i < nBush; i++, idx++) {
+      const s = spots[idx];
+      this.addBush(s.x + 0.5, s.y + 1, s.z + 0.5);
+    }
+    const nChick = Math.min(chickenTarget, Math.max(0, spots.length - idx));
+    for (let i = 0; i < nChick; i++, idx++) {
+      const s = spots[idx];
+      this.addChicken(s.x + 0.5, s.y + 1, s.z + 0.5);
+    }
+    return { bushes: nBush, chickens: nChick };
+  }
+
+  clearGroundLife() {
+    for (const b of this.bushes) this.scene.remove(b.mesh);
+    this.bushes.length = 0;
+    for (const a of this.animals) this.scene.remove(a.mesh);
+    this.animals.length = 0;
   }
 
   // ---- Fish --------------------------------------------------------
@@ -137,6 +305,7 @@ export class Creatures {
   reset() {
     this.clearFish();
     this.clearDrops();
+    this.clearGroundLife();
   }
 
   catchFish(index) {
@@ -148,6 +317,36 @@ export class Creatures {
     this.fish.splice(index, 1);
     sounds.playCatchSound();
     if (this.onCatch) this.onCatch('raw_fish');
+  }
+
+  // The 挖掘 key: first try a fish in the crosshair, then a berry bush
+  interactByRay(camera, maxDist = 7) {
+    if (this.catchFishByRay(camera, maxDist)) return true;
+    return this.pickBushByRay(camera, maxDist);
+  }
+
+  pickBushByRay(camera, maxDist = 7) {
+    const origin = camera.position;
+    const dir = camera.getWorldDirection(new THREE.Vector3());
+    const ray = new THREE.Ray(origin, dir);
+    const tmp = new THREE.Vector3();
+
+    let best = null;
+    let bestDist = Infinity;
+    for (const bush of this.bushes) {
+      if (!bush.ripe) continue;
+      const p = bush.mesh.position.clone();
+      p.y += 0.3;
+      const d = origin.distanceTo(p);
+      if (d > maxDist) continue;
+      ray.closestPointToPoint(p, tmp);
+      if (tmp.distanceTo(p) > 0.8) continue;
+      if (d < bestDist) {
+        bestDist = d;
+        best = bush;
+      }
+    }
+    return best ? this.pickBush(best) : false;
   }
 
   // Left click / 挖掘键 while aiming at a fish also catches it
@@ -251,9 +450,77 @@ export class Creatures {
 
   // ---- Per frame -----------------------------------------------------
 
-  update(delta, player) {
+  update(delta, player, hasBerries = false) {
     this.updateFish(delta, player);
     this.updateDrops(delta, player);
+    this.updateBushes(delta, player);
+    this.updateAnimals(delta, player, hasBerries);
+  }
+
+  updateBushes(delta, player) {
+    for (const bush of this.bushes) {
+      if (!bush.ripe) {
+        bush.regrow -= delta;
+        if (bush.regrow <= 0) this.setBushRipe(bush, true);
+        continue;
+      }
+      // Walking into a ripe bush picks it
+      if (player && bush.mesh.position.distanceTo(player.position) < 1.3) {
+        this.pickBush(bush);
+      }
+    }
+  }
+
+  updateAnimals(delta, player, hasBerries) {
+    for (const a of this.animals) {
+      const p = a.mesh.position;
+
+      let dirX = a.dir.x;
+      let dirZ = a.dir.z;
+      let speed = a.speed;
+
+      // Carrying berries? The chickens come to you.
+      const toPlayer = player ? player.position.distanceTo(p) : Infinity;
+      if (hasBerries && toPlayer < 10 && toPlayer > 1.2) {
+        dirX = (player.position.x - p.x) / toPlayer;
+        dirZ = (player.position.z - p.z) / toPlayer;
+        speed = a.speed * 1.5;
+      } else {
+        a.turnTimer -= delta;
+        if (a.turnTimer <= 0) {
+          a.turnTimer = 1.5 + Math.random() * 3;
+          const ang = Math.random() * Math.PI * 2;
+          a.dir.set(Math.cos(ang), 0, Math.sin(ang));
+          dirX = a.dir.x;
+          dirZ = a.dir.z;
+        }
+      }
+
+      // Try straight ahead first, then sidestep — otherwise a chicken following
+      // you gets stuck forever against the first pond or cliff in the way.
+      const moved = stepOnGround(this.world, p, dirX, dirZ, speed, delta, 1);
+      if (!moved) {
+        a.dir.set(-a.dir.x, 0, -a.dir.z).normalize();
+        a.turnTimer = 1 + Math.random();
+      }
+
+      a.mesh.rotation.y = Math.atan2(dirX, dirZ);
+      a.walk += delta * 8;
+      const swing = Math.sin(a.walk) * 0.5;
+      a.mesh.userData.legL.rotation.x = swing;
+      a.mesh.userData.legR.rotation.x = -swing;
+
+      // Occasional little hop
+      a.hopTimer -= delta;
+      if (a.hopTimer <= 0) {
+        a.hopTimer = 3 + Math.random() * 5;
+        a.hop = 0.35;
+      }
+      if (a.hop > 0) {
+        a.hop -= delta * 1.4;
+        a.mesh.position.y += Math.max(0, a.hop) * delta * 4;
+      }
+    }
   }
 
   updateFish(delta, player) {

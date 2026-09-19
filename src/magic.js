@@ -29,6 +29,7 @@ export class MagicSystem {
     this.player = player;
     this.particles = particles;
     this.creatures = creatures;
+    this.monsters = null; // wired from main.js
     this.ui = null; // wired from main.js
 
     this.fireballs = [];
@@ -173,7 +174,13 @@ export class MagicSystem {
         fb.mesh.position.add(inc);
         const p = fb.mesh.position;
 
-        // Entities first (a fish or a dropped fish is a smaller target)
+        // Monsters first — hitting one is the whole point of the night
+        if (this.monsters && this.monsters.hitByFireball(p)) {
+          consumed = true;
+          break;
+        }
+
+        // Then the smaller targets (a fish, or a dropped fish on the ground)
         if (this.creatures && this.creatures.hitByFireball(p, this)) {
           consumed = true;
           break;

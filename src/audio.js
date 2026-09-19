@@ -285,6 +285,26 @@ class SoundManager {
     this.playTone('sine', 300, 760, 0.3, 0.13);
   }
 
+  // A monster lands a hit on the player
+  playMonsterHitSound() {
+    this.playTone('sawtooth', 200, 70, 0.22, 0.14);
+    this.playNoise(0.2, 'lowpass', 700, 180, 0.16);
+  }
+
+  // A monster is destroyed by fire magic
+  playMonsterDieSound() {
+    this.playTone('square', 320, 60, 0.35, 0.13);
+    this.playNoise(0.4, 'lowpass', 1400, 200, 0.2);
+  }
+
+  // Day flips to night, or night to day
+  playChimeSound(up = true) {
+    const a = up ? 440 : 660;
+    const b = up ? 660 : 440;
+    this.playTone('sine', a, a, 0.18, 0.1);
+    setTimeout(() => this.playTone('sine', b, b, 0.28, 0.1), 160);
+  }
+
   // Eating the cooked fish
   playEatSound() {
     this.playTone('square', 240, 170, 0.09, 0.1);
