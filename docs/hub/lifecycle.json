@@ -1,0 +1,376 @@
+{
+  "revision": "r6-preclass-20260926",
+  "current_phase": "mvp",
+  "overall_basis": "three_phase_equal_weight_gate_index",
+  "overall_label": [
+    "三阶段总进度 · 里程碑口径",
+    "Overall progress · three-phase milestone index"
+  ],
+  "formula": [
+    "总进度 = (MVP完成率 + 资产完成率 + 发布运营准备完成率) ÷ 3。三个阶段等权；每阶段内部只数已完成的验收项。不表示工时、花费或日历时间占比。",
+    "Overall = (MVP gate completion + asset gate completion + release/operations readiness completion) / 3. Phases have equal weight; only completed gates count within a phase. This is not labour, spending or elapsed-time percentage."
+  ],
+  "not_authorized_for_execution": true,
+  "phases": [
+    {
+      "id": "mvp",
+      "name": [
+        "MVP 核心玩法定稿",
+        "MVP core-gameplay freeze"
+      ],
+      "weight": 0.3333333333333333,
+      "state": "active",
+      "goal": [
+        "先把核心玩法真正做通、选定主线并验证稳定。",
+        "Make the core loop work, select the mainline and verify it."
+      ],
+      "exit": [
+        "最终测试通过，固定 MVP 基线。",
+        "Pass the final test and freeze the MVP baseline."
+      ],
+      "gates": [
+        {
+          "id": "m1",
+          "title": [
+            "原需求、反馈与限制回收",
+            "Recover original requirements, feedback and limits"
+          ],
+          "deliverable": [
+            "以已有课堂纪要与源码为依据；新课堂意见之后再归入本作品。",
+            "Grounded in existing notes/source; new lesson input will be added later."
+          ],
+          "status": "complete",
+          "evidence": [
+            "A-HISTORY",
+            "PREP"
+          ]
+        },
+        {
+          "id": "m2",
+          "title": [
+            "共同核心规则与验收草案",
+            "Shared core rules and acceptance draft"
+          ],
+          "deliverable": [
+            "保留已有核心循环，列出课内需要确认的变化；不是宣称新玩法已定稿。",
+            "Retain the core loop and identify changes to confirm in class; this is not a final new-game specification."
+          ],
+          "status": "complete",
+          "evidence": [
+            "A-HISTORY",
+            "PREP"
+          ]
+        },
+        {
+          "id": "m3",
+          "title": [
+            "可操作 MVP 原型",
+            "Build an operable MVP"
+          ],
+          "deliverable": [
+            "Opus/Astra分别提交可操作原型，当前两条都尚未实现。",
+            "Opus/Astra each deliver an operable prototype; both are currently unbuilt."
+          ],
+          "status": "pending",
+          "evidence": []
+        },
+        {
+          "id": "m4",
+          "title": [
+            "分支评审与主线收敛",
+            "Review branches and choose a mainline"
+          ],
+          "deliverable": [
+            "明确当前主线与对照版本；选择不冒充源码合并。",
+            "Identify mainline and comparisons; selection is not source merging."
+          ],
+          "status": "pending",
+          "evidence": []
+        },
+        {
+          "id": "m5",
+          "title": [
+            "试玩入口与操作适配",
+            "Adapt play entry and controls"
+          ],
+          "deliverable": [
+            "双语、单机、返回与本机保存；需要时加联机测试入口。",
+            "Language, solo, return and saves; an online test entry where needed."
+          ],
+          "status": "pending",
+          "evidence": []
+        },
+        {
+          "id": "m6",
+          "title": [
+            "自动回归、缺陷与证据归档",
+            "Automated regression and evidence"
+          ],
+          "deliverable": [
+            "已执行的测试、失败记录和修复来源可读回。",
+            "Executed checks, failures and repair provenance can be retrieved."
+          ],
+          "status": "pending",
+          "evidence": []
+        },
+        {
+          "id": "m7",
+          "title": [
+            "最终正常流程测试 → MVP 定稿",
+            "Final normal-path test → MVP freeze"
+          ],
+          "deliverable": [
+            "真实设备完整通关、关键边界与恢复测试；确认后固定核心范围，不再任意扩展。",
+            "Full physical-device normal flow, key boundaries and recovery; then freeze core scope."
+          ],
+          "status": "pending",
+          "evidence": []
+        }
+      ],
+      "completed_gates": 2,
+      "total_gates": 7,
+      "completion_percent": 28.571428571428573
+    },
+    {
+      "id": "assets",
+      "name": [
+        "完整资产与视听呈现",
+        "Complete assets and audiovisual experience"
+      ],
+      "weight": 0.3333333333333333,
+      "state": "planned",
+      "depends_on": "mvp",
+      "goal": [
+        "补足故事与引导，强化视觉，把音乐、音效和配音制作成完整资产。",
+        "Complete story/guidance, strengthen visuals and produce full music, sound and voice assets."
+      ],
+      "exit": [
+        "完整资产包与故事体验集成验收通过。",
+        "Pass integrated full-asset and story-experience acceptance."
+      ],
+      "gates": [
+        {
+          "id": "a1",
+          "title": [
+            "完整故事线",
+            "Complete storyline"
+          ],
+          "deliverable": [
+            "世界设定、角色动机、章节、冲突、结局与任务逻辑补足。",
+            "Complete world, motives, chapters, conflict, ending and quest logic."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a2",
+          "title": [
+            "完整引导与可理解性",
+            "Complete guidance and comprehension"
+          ],
+          "deliverable": [
+            "新手教学、目标提示、失败/返回引导及双语文案成套验证。",
+            "Validate onboarding, objectives, failure/recovery guidance and bilingual copy."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a3",
+          "title": [
+            "资产规格与清单",
+            "Asset specification and inventory"
+          ],
+          "deliverable": [
+            "锁定风格、格式、性能预算、文件命名、版本和授权来源。",
+            "Define style, formats, performance budgets, naming, versions and provenance."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a4",
+          "title": [
+            "视觉资产与动画特效",
+            "Visual assets, animation and effects"
+          ],
+          "deliverable": [
+            "角色、场景、界面、道具、动画、技能与反馈资产完整替换/强化。",
+            "Complete characters, environments, UI, props, animation, skills and feedback assets."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a5",
+          "title": [
+            "音乐资产",
+            "Music assets"
+          ],
+          "deliverable": [
+            "场景/情绪/战斗/结局音乐、循环与混音，形成可复用资产。",
+            "Produce reusable scene, mood, combat and ending music, loops and mixes."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a6",
+          "title": [
+            "音效资产",
+            "Sound-effect assets"
+          ],
+          "deliverable": [
+            "动作、交互、环境、能力和 UI 提示音齐备，控制响度与触发逻辑。",
+            "Complete action, interaction, ambient, ability and UI sounds, loudness and triggers."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a7",
+          "title": [
+            "配音与角色声音",
+            "Voice and character audio"
+          ],
+          "deliverable": [
+            "旁白/角色/引导台词、授权、双语发音和字幕，对话音频资产化。",
+            "Assetize narration, dialogue and guidance with consent, bilingual pronunciation and subtitles."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "a8",
+          "title": [
+            "视听集成与整体验收",
+            "Integrated audiovisual acceptance"
+          ],
+          "deliverable": [
+            "全量资产装配、故事体验、音量可控、加载性能与多端回归。",
+            "Integrate all assets, story experience, audio controls, loading performance and device regression."
+          ],
+          "status": "planned",
+          "evidence": []
+        }
+      ],
+      "completed_gates": 0,
+      "total_gates": 8,
+      "completion_percent": 0.0
+    },
+    {
+      "id": "release",
+      "name": [
+        "平台发布、销售与长期运营",
+        "Platform release, sales and long-term operations"
+      ],
+      "weight": 0.3333333333333333,
+      "state": "planned",
+      "depends_on": "assets",
+      "goal": [
+        "从作品变为能发布、交付、支持与持续运营的产品。",
+        "Turn the work into a product that can launch, deliver, support and operate."
+      ],
+      "exit": [
+        "完成正式发布并建立持续服务能力；运营本身不以100%表示永远结束。",
+        "Launch and establish continuing service capability; 100% readiness does not end ongoing operations."
+      ],
+      "gates": [
+        {
+          "id": "r1",
+          "title": [
+            "发行与商业方案",
+            "Release and commercial plan"
+          ],
+          "deliverable": [
+            "选择实际平台、目标受众、销售/免费模式和服务边界。",
+            "Choose platforms, audiences, paid/free model and service scope."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "r2",
+          "title": [
+            "授权、隐私与平台要求",
+            "Rights, privacy and platform requirements"
+          ],
+          "deliverable": [
+            "核对资产许可、商店规则、儿童数据、隐私告知与删除机制。",
+            "Verify asset rights, store requirements, children’s data, notices and deletion mechanisms."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "r3",
+          "title": [
+            "发行构建与兼容验收",
+            "Release builds and compatibility"
+          ],
+          "deliverable": [
+            "发行包、安装/升级、设备兼容、稳定性、安全与恢复检查。",
+            "Test release packages, installation/upgrades, compatibility, stability, security and recovery."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "r4",
+          "title": [
+            "商店与宣传素材",
+            "Store and marketing material"
+          ],
+          "deliverable": [
+            "商品页、图文/视频、价格、帮助说明与支持入口完成。",
+            "Complete listing, screenshots/video, pricing, help and support entry."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "r5",
+          "title": [
+            "正式平台销售发布",
+            "Production platform/sales launch"
+          ],
+          "deliverable": [
+            "完成平台发布与购买/访问/交付路径验证，而非只有测试网址。",
+            "Launch and verify purchase/access/delivery paths, not only a test URL."
+          ],
+          "status": "planned",
+          "evidence": []
+        },
+        {
+          "id": "r6",
+          "title": [
+            "长期服务运营准备",
+            "Long-term service readiness"
+          ],
+          "deliverable": [
+            "监控、成本、备份恢复、客服、内容更新和事故处理可执行；之后按运行指标持续管理。",
+            "Make monitoring, costs, backup/recovery, support, updates and incident handling operational; then track ongoing service metrics."
+          ],
+          "status": "planned",
+          "evidence": []
+        }
+      ],
+      "completed_gates": 0,
+      "total_gates": 6,
+      "completion_percent": 0.0
+    }
+  ],
+  "coverage_note": [
+    "这里计算本轮两路重制的里程碑，不是把旧版完成度重置。第二阶段故事与完整资产、第三阶段发布运营尚未进入；现有原型视觉与声音不冒充正式资产包。",
+    "This measures the two-remake workflow, not a reset of historical work. Full story/assets and release/operations are later phases; prototype visuals/audio are not a finished asset package."
+  ],
+  "phase1_final_tests": [
+    "两条新候选完成后，各自正常流程测试，再做AI评审收敛和最终MVP验收。",
+    "After both candidates exist, test normally, perform AI evidence review, converge and finally accept the MVP."
+  ],
+  "overall_percent": 9.523809523809524,
+  "current_note": [
+    "当前只完成原需求回收与核心规则归纳（2/7）；Opus/Astra尚未制作、未比较、未最终测试。旧版成果保留在历史区，不因重制而被抹去。",
+    "Only original requirements and core-rule synthesis are prepared (2/7). Opus/Astra are unbuilt, unreviewed and not finally tested. The baseline is retained in history, not erased."
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "requirements": [
+    [
+      [
+        "魔法要改变世界，不只是漂亮",
+        "Magic must change the world, not just look pretty"
+      ],
+      [
+        "保留火球点燃可燃物、火遇水熄灭产生蒸汽；火会造成危险，有明确反馈。",
+        "Retain fireballs igniting flammable blocks, water extinguishing fire into steam, and readable danger/feedback."
+      ]
+    ],
+    [
+      [
+        "抓鱼 → 烤鱼 → 吃鱼",
+        "Catch → cook → eat"
+      ],
+      [
+        "水里要有看得见且可互动的生命；抓鱼、放下、烤熟、拾取、食用与生命/移动效果互相连接。",
+        "Water needs visible interactive life; catching, placing, cooking, collecting and eating connect to health/movement effects."
+      ]
+    ],
+    [
+      [
+        "昼夜有区别，但动物不消失",
+        "Day and night differ, without deleting animals"
+      ],
+      [
+        "太阳白天、月亮夜间；晚上出现怪物，魔法能打怪；鱼与小鸡保持存在，浆果可采集。",
+        "Sun by day, moon by night; monsters appear at night and respond to magic; fish/chickens persist and berries are collectable."
+      ]
+    ],
+    [
+      [
+        "保留自由创造与可靠存档",
+        "Keep creative building and dependable saves"
+      ],
+      [
+        "保留飞行、挖掘、放置、方块库及保存/导入导出。先复现已有目标，不额外承诺所有Minecraft机制。",
+        "Retain flight, mining, placement, inventory and save/import/export. Recreate established goals, not every Minecraft mechanic."
+      ]
+    ]
+  ],
+  "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+  "history_versions": [
+    [
+      "d80d7dc",
+      "2026-09-12",
+      [
+        "创造与输入基线",
+        "Creative/input baseline"
+      ]
+    ],
+    [
+      "4a57829",
+      "2026-09-19",
+      [
+        "魔法与抓烤吃",
+        "Magic and catch/cook/eat"
+      ]
+    ],
+    [
+      "2b22154",
+      "2026-09-19",
+      [
+        "昼夜与地面生态",
+        "Day/night and ground ecology"
+      ]
+    ]
+  ],
+  "old_playability_assessment": null
+}

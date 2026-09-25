@@ -1,0 +1,580 @@
+{
+  "revision": "r6-preclass-20260926",
+  "graphs": [
+    {
+      "id": "lineage",
+      "title": [
+        "历史成果与两路重制的发散收敛",
+        "Historical work and planned two-remake divergence/convergence"
+      ],
+      "direction": "TB",
+      "nodes": [
+        {
+          "id": "h0",
+          "title": [
+            "创造与输入基线",
+            "Creative/input baseline"
+          ],
+          "state": "archive",
+          "detail": [
+            "源码提交 d80d7dc，保留历史；本次不改其逻辑。",
+            "Source commit d80d7dc retained; this pass does not alter its logic."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "h1",
+          "title": [
+            "魔法与抓烤吃",
+            "Magic and catch/cook/eat"
+          ],
+          "state": "archive",
+          "detail": [
+            "源码提交 4a57829，保留历史；本次不改其逻辑。",
+            "Source commit 4a57829 retained; this pass does not alter its logic."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "h2",
+          "title": [
+            "昼夜与地面生态",
+            "Day/night and ground ecology"
+          ],
+          "state": "archive",
+          "detail": [
+            "源码提交 2b22154，保留历史；本次不改其逻辑。",
+            "Source commit 2b22154 retained; this pass does not alter its logic."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "brief",
+          "title": [
+            "回收需求 → 共同Brief",
+            "Recovered requirements → shared brief"
+          ],
+          "state": "decision",
+          "detail": [
+            "基于原目标与反馈；新增机制需在课堂对齐。",
+            "From existing goals/feedback; align new mechanics in class."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "id": "opus",
+          "title": [
+            "Opus独立重制\n尚未开始",
+            "Opus independent remake\nnot started"
+          ],
+          "state": "pending",
+          "detail": [
+            "只有任务与预留目录，没有虚构游戏。",
+            "Task/reserved path only; no fabricated game."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "id": "astra",
+          "title": [
+            "Astra独立重制\n尚未开始",
+            "Astra independent remake\nnot started"
+          ],
+          "state": "pending",
+          "detail": [
+            "同一要求、独立实现。",
+            "Same requirements, independent implementation."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "id": "review",
+          "title": [
+            "两版各自QA → AI理据评审\n待两版真实交付",
+            "QA each → AI evidence review\nawait actual deliveries"
+          ],
+          "state": "pending",
+          "detail": [
+            "不是按模型名称直接宣布胜者。",
+            "Do not pick a winner by model name."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "id": "select",
+          "title": [
+            "主线选择 / 经批准的融合\n尚未发生",
+            "Select mainline / approved merge\nnot yet performed"
+          ],
+          "state": "pending",
+          "detail": [
+            "只有实施过的融合才画成代码合并。",
+            "Only performed merges count as code merging."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "id": "freeze",
+          "title": [
+            "最终正常流程测试\nMVP定稿待完成",
+            "Final normal-path test\nMVP freeze pending"
+          ],
+          "state": "pending",
+          "detail": [
+            "后续再进入完整资产与正式发布。",
+            "Full assets and formal release follow later."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "source": "h0",
+          "target": "h1",
+          "type": "derive",
+          "label": [
+            "已有迭代",
+            "Existing iteration"
+          ],
+          "reason": [
+            "实际Git记录，不是待制作的重制。",
+            "Actual Git history, not the planned remake."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "source": "h1",
+          "target": "h2",
+          "type": "derive",
+          "label": [
+            "已有迭代",
+            "Existing iteration"
+          ],
+          "reason": [
+            "实际Git记录，不是待制作的重制。",
+            "Actual Git history, not the planned remake."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "source": "h2",
+          "target": "brief",
+          "type": "requirements",
+          "label": [
+            "吸收需求，不强制继承旧代码",
+            "Reuse requirements, not mandatory old code"
+          ],
+          "reason": [
+            "重制由共同Brief驱动。",
+            "The shared brief drives rebuilding."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "brief",
+          "target": "opus",
+          "type": "future",
+          "label": [
+            "计划分支A",
+            "Planned branch A"
+          ],
+          "reason": [
+            "尚未执行，不画为完成。",
+            "Not executed, not shown as complete."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "brief",
+          "target": "astra",
+          "type": "future",
+          "label": [
+            "计划分支B",
+            "Planned branch B"
+          ],
+          "reason": [
+            "尚未执行，不提前评分。",
+            "Not executed, not pre-rated."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "opus",
+          "target": "review",
+          "type": "future",
+          "label": [
+            "待交付与测试",
+            "Await delivery and QA"
+          ],
+          "reason": [
+            "交付之后才能成为评审输入。",
+            "Only delivered evidence enters review."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "astra",
+          "target": "review",
+          "type": "future",
+          "label": [
+            "待交付与测试",
+            "Await delivery and QA"
+          ],
+          "reason": [
+            "独立验收再比较。",
+            "Validate independently, then compare."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "review",
+          "target": "select",
+          "type": "future",
+          "label": [
+            "待证据收敛",
+            "Await evidence-based convergence"
+          ],
+          "reason": [
+            "不能把计划比较写成已融合。",
+            "Planned comparison is not an executed merge."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        },
+        {
+          "source": "select",
+          "target": "freeze",
+          "type": "future",
+          "label": [
+            "通过后固定MVP",
+            "Freeze after final pass"
+          ],
+          "reason": [
+            "真实设备与正常流程。",
+            "Physical-device and normal-path testing."
+          ],
+          "evidence": [
+            "PREP"
+          ]
+        }
+      ],
+      "summary": [
+        "实线保留已发生迭代，虚线表示尚未制作的Opus/Astra与后续收敛；现在没有新主线胜出，也没有源码合并。",
+        "Solid edges preserve past iterations. Dashed edges represent unbuilt Opus/Astra branches and future convergence. No winner or code merge exists yet."
+      ]
+    },
+    {
+      "id": "major-repairs",
+      "title": [
+        "已有大修：问题、方向与证据边界",
+        "Historical repairs: problem, direction and evidence limits"
+      ],
+      "direction": "TB",
+      "nodes": [
+        {
+          "id": "issue0",
+          "title": [
+            "iPad打不开 / 没有鼠标",
+            "iPad access / no mouse"
+          ],
+          "state": "repair",
+          "detail": [
+            "历史记录中的问题；不冒称今天重新复现。",
+            "Historically recorded issue, not claimed as freshly reproduced."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "fix0",
+          "title": [
+            "补触屏、键盘与静态分发",
+            "Add touch, keyboard and static delivery"
+          ],
+          "state": "archive",
+          "detail": [
+            "已有修订记录；新两路实现仍需独立验证。",
+            "Recorded revision; both remakes still require independent checks."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "issue1",
+          "title": [
+            "水里空且看不清",
+            "Empty/dark water"
+          ],
+          "state": "repair",
+          "detail": [
+            "历史记录中的问题；不冒称今天重新复现。",
+            "Historically recorded issue, not claimed as freshly reproduced."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "fix1",
+          "title": [
+            "鱼与食物循环 / 水材质可见度",
+            "Fish/food loop / water visibility"
+          ],
+          "state": "archive",
+          "detail": [
+            "已有修订记录；新两路实现仍需独立验证。",
+            "Recorded revision; both remakes still require independent checks."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "issue2",
+          "title": [
+            "树冠被当作脚下地面",
+            "Treetop mistaken for ground"
+          ],
+          "state": "repair",
+          "detail": [
+            "历史记录中的问题；不冒称今天重新复现。",
+            "Historically recorded issue, not claimed as freshly reproduced."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "id": "fix2",
+          "title": [
+            "脚下方块、台阶与绕行",
+            "Foot-level blocks, steps and detours"
+          ],
+          "state": "archive",
+          "detail": [
+            "已有修订记录；新两路实现仍需独立验证。",
+            "Recorded revision; both remakes still require independent checks."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "source": "issue0",
+          "target": "fix0",
+          "type": "repair",
+          "label": [
+            "问题 → 针对修订",
+            "Issue → targeted revision"
+          ],
+          "reason": [
+            "保留历史证据的范围与缺口。",
+            "Preserve the historical scope and evidence gaps."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "source": "issue1",
+          "target": "fix1",
+          "type": "repair",
+          "label": [
+            "问题 → 针对修订",
+            "Issue → targeted revision"
+          ],
+          "reason": [
+            "保留历史证据的范围与缺口。",
+            "Preserve the historical scope and evidence gaps."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        },
+        {
+          "source": "issue2",
+          "target": "fix2",
+          "type": "repair",
+          "label": [
+            "问题 → 针对修订",
+            "Issue → targeted revision"
+          ],
+          "reason": [
+            "保留历史证据的范围与缺口。",
+            "Preserve the historical scope and evidence gaps."
+          ],
+          "evidence": [
+            "A-HISTORY"
+          ]
+        }
+      ],
+      "summary": [
+        "这不是此次重制已经完成的修复清单，而是交给两条候选的历史教训。",
+        "These are lessons for the candidates, not repairs claimed as completed by this remake."
+      ]
+    }
+  ],
+  "edge_types": {
+    "derive": [
+      "源码适配/继续实现",
+      "Source adaptation/continuation"
+    ],
+    "requirements": [
+      "复用需求，不继承旧源码",
+      "Requirements reuse, not old source"
+    ],
+    "repair": [
+      "同分支大修与回归",
+      "Major in-branch repair/regression"
+    ],
+    "review": [
+      "输入评审，不是合并代码",
+      "Review input, not a code merge"
+    ],
+    "select": [
+      "选择主线",
+      "Mainline selection"
+    ],
+    "retain": [
+      "保留对照",
+      "Retained comparison"
+    ],
+    "future": [
+      "尚未完成",
+      "Not yet completed"
+    ]
+  },
+  "no_merge_statement": [
+    "现在仅完成资料与HUB准备；两条重制没有代码，没有QA结果，也未选择主线。",
+    "Only records/HUB preparation is complete. Neither remake has code or QA results, and no mainline is selected."
+  ],
+  "sources": {
+    "A-HISTORY": {
+      "path": "DEVLOG.md",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "a5595efcf5b4f0b76700a106ce5db3e08af728d679c5b6d54c4d66c51f28cce6",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/DEVLOG.md",
+      "title": [
+        "DEVLOG.md",
+        "DEVLOG.md"
+      ]
+    },
+    "A-README": {
+      "path": "README.md",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "700c5767d268ee88920916e8eff6d5c4d7943b58fff5d0d7e75727483f3979a8",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/README.md",
+      "title": [
+        "README.md",
+        "README.md"
+      ]
+    },
+    "A-MAGIC": {
+      "path": "src/magic.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/magic.js",
+      "title": [
+        "src/magic.js",
+        "src/magic.js"
+      ]
+    },
+    "A-CREATURES": {
+      "path": "src/creatures.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/creatures.js",
+      "title": [
+        "src/creatures.js",
+        "src/creatures.js"
+      ]
+    },
+    "A-DAYNIGHT": {
+      "path": "src/daynight.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/daynight.js",
+      "title": [
+        "src/daynight.js",
+        "src/daynight.js"
+      ]
+    },
+    "A-MONSTERS": {
+      "path": "src/monsters.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/monsters.js",
+      "title": [
+        "src/monsters.js",
+        "src/monsters.js"
+      ]
+    },
+    "A-WALK": {
+      "path": "src/walk.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/walk.js",
+      "title": [
+        "src/walk.js",
+        "src/walk.js"
+      ]
+    },
+    "A-SAVE": {
+      "path": "src/storage.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/storage.js",
+      "title": [
+        "src/storage.js",
+        "src/storage.js"
+      ]
+    },
+    "PREP": {
+      "path": "hub/preparation.json",
+      "source_ref": null,
+      "sha256": null,
+      "href": "preparation.json",
+      "title": [
+        "本轮准备清单",
+        "This preparation manifest"
+      ]
+    }
+  }
+}

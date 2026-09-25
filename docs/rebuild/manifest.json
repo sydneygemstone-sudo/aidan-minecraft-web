@@ -1,0 +1,30 @@
+{
+  "revision": "r6-preclass-20260926",
+  "project": "aidan",
+  "repo": "aidan-minecraft-web",
+  "class_date": "2026-09-26",
+  "scope": "HUB adaptation and remake preparation only",
+  "status": "PREPARED_NOT_EXECUTED",
+  "template_ref": "ddb6d1f078e7013cfb9d082416a7083463b85cc6",
+  "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+  "requirements_status": "Recovered baseline and preclass draft; classroom changes not yet supplied",
+  "branches": [
+    {
+      "model": "opus",
+      "status": "PLANNED_NOT_STARTED",
+      "output_dir": "rebuild/opus/",
+      "play_url": null,
+      "ai_score": null,
+      "task_file": "opus/task.txt"
+    },
+    {
+      "model": "astra",
+      "status": "PLANNED_NOT_STARTED",
+      "output_dir": "rebuild/astra/",
+      "play_url": null,
+      "ai_score": null,
+      "task_file": "astra/task.txt"
+    }
+  ],
+  "not_modified": "Existing gameplay, saves, classroom servers and unrelated projects; Naomi is excluded."
+}

@@ -1,0 +1,13 @@
+{
+  "revision": "r6-preclass-20260926",
+  "mode": "local",
+  "project": "aidan",
+  "scope": "Existing game startup/controlled-frame screenshot plus HUB, plans, language, diagrams, budgets and form checks. Not a remake implementation or full game acceptance.",
+  "checks": [],
+  "failures": [
+    "page.screenshot: Timeout 15000ms exceeded.\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n"
+  ],
+  "started": "2026-09-25T12:22:40.480Z",
+  "finished": "2026-09-25T12:23:19.780Z",
+  "status": "FAIL"
+}

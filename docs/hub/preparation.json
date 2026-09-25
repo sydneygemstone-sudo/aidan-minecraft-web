@@ -1,0 +1,87 @@
+{
+  "revision": "r6-preclass-20260926",
+  "project": "aidan",
+  "repo": "aidan-minecraft-web",
+  "class_date": "2026-09-26",
+  "scope": "HUB adaptation and remake preparation only",
+  "status": "PREPARED_NOT_EXECUTED",
+  "template_ref": "ddb6d1f078e7013cfb9d082416a7083463b85cc6",
+  "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+  "requirements_status": "Recovered baseline and preclass draft; classroom changes not yet supplied",
+  "branches": [
+    {
+      "model": "opus",
+      "status": "PLANNED_NOT_STARTED",
+      "output_dir": "rebuild/opus/",
+      "play_url": null,
+      "ai_score": null,
+      "task_file": "opus/task.txt"
+    },
+    {
+      "model": "astra",
+      "status": "PLANNED_NOT_STARTED",
+      "output_dir": "rebuild/astra/",
+      "play_url": null,
+      "ai_score": null,
+      "task_file": "astra/task.txt"
+    }
+  ],
+  "not_modified": "Existing gameplay, saves, classroom servers and unrelated projects; Naomi is excluded.",
+  "template_standard": "CLASSROOM-HUB-R5-20260923",
+  "template_lifecycle": {
+    "revision": "hub-r6-lifecycle-20260925",
+    "standard": "docs/hub-standard/R6-LIFECYCLE-AND-AI-REVIEW.md",
+    "scope": [
+      "martins-monster-quest/hub/",
+      "adventure-world/hub/"
+    ],
+    "preflight": "python3 scripts/hub-lifecycle/build.py; node scripts/hub-lifecycle/qa.cjs",
+    "no_fallback": "Do not restore single-stage total progress, placeholder human star grading or untyped merge arrows."
+  },
+  "template_files": {
+    "studio.js": "d65509cd37132f026e4a7836d91d288a528e89a99b8327d7e6063e644e241ed8",
+    "studio.css": "10474d980a37cba22bf1b11b932569a2d1ec6ce61e12802f0e0cb475bf2718aa",
+    "studio-r3.css": "25eebf6889fab91f12bf57f6bea1a613eb4c6ef8bfedd9ea602522ae7e99dc42",
+    "studio-r5.css": "7852c1b590305cda2f0fe4607cb57520b1724fd87d0a3ac994368cdb1cd19fd4",
+    "r6.css": "32ee7d77341e581bd753d416cfb932e9b7eb29eb6fcc188b6ad227d31d75c920",
+    "lifecycle.css": "3ecab3e63d5ea437d447f470c03be1e904a33f49903f73dd1bf14e75efc56d87"
+  },
+  "protected_game_files": {
+    "src/ui.js": "654ebaaadc926725e3563b034f1c48730bca9df0241b8b6a83980afd7055d7a3",
+    "src/world.js": "584dcc9af44b641af865c39954bcd3934cec77f7719a2caa0b249e1686f218c5",
+    "src/creatures.js": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+    "src/magic.js": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+    "src/main.js": "d6e719f939d467db2820eafe923d28bfb004cdfd6226667800f2028227f8f935",
+    "src/blocks.js": "8b106e329f798078b1f45c281095b66bdf619a82a3f56e8ae06f99e21051ee3a",
+    "src/audio.js": "829859297d0c0ea6f7766bd1dcee01fc9217f10be084bce80a820cfc9cef1a9f",
+    "src/textures.js": "86d795e94216778da0a921c58453b0b369e12e2f129f2f2901fe1c8ca64c8e7c",
+    "src/player.js": "f02f9e426706b410ad1a9dafe9053d9d07d5a81e8e489212f96a62600d89855e",
+    "src/walk.js": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+    "src/particles.js": "57abdb0a53f0ec77f8fbe04dc03ac73be605e400ae9abd139f907f1eae3e64bb",
+    "src/noise.js": "8e2fb999d9f1dcb43678486a9846524a75138fc410e774b42743ce194d0cef91",
+    "src/monsters.js": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+    "src/storage.js": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+    "src/daynight.js": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+    "dist/index.html": "4e9b81afb82c29f9920cc296794efa3d9b17e7193dc7c03865bce1a15048eee0",
+    "dist/assets/index-IsojDVBc.css": "0013911374e13d7bcbe9293ff0439b7f086ada735747da8d0eff8fd852c29aba",
+    "dist/assets/index-D5ygSxUQ.js": "397b376f07d546586c1abc2cd6c685dca4dd7f61175bad404f2955c8494c7d04",
+    "server.js": "2a51e6d6b22db881b90dd71751f62a3d3caf61473917f3290b38b0f1ae70f85b",
+    "package.json": "6d3e69fe9a6b26fc2daf3d52935a1aa6d6dfeb61ba07aedc34fcd17eaaa70759",
+    "package-lock.json": "098bffb950f15dbf8a293e84f9313fe12590d06089a9cdb318a09fa67347320e",
+    "vite.config.js": "b95c0c1130f58e559e27eac7d7d766426fa5ffca9151f1b81e2cfc4d96ef61b6",
+    "style.css": "fe80ba8b6530e8616ff71f433b1d452f05c7cd8dfd33041bf68a660b0f4399a2",
+    "index.html": "142bb10a4c069b75cc4c969d6548ffce3ceddb36c64bcb02b81b254ac21952e9"
+  },
+  "game_files_unchanged": true,
+  "new_game_implementations": 0,
+  "diagrams": [
+    "docs/hub/lineage-lineage-zh.mmd",
+    "docs/hub/lineage-lineage-en.mmd",
+    "docs/hub/lineage-major-repairs-zh.mmd",
+    "docs/hub/lineage-major-repairs-en.mmd"
+  ],
+  "budget_current_estimate": 18,
+  "budget_future_reserve": 20,
+  "public_site_directory": "docs",
+  "privacy": "New summaries use first names only; no calendar times, surnames, contact details, private networks or raw chats are copied."
+}

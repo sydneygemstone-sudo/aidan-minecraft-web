@@ -1,0 +1,206 @@
+{
+  "revision": "r6-preclass-20260926",
+  "reviewer_type": "AI",
+  "assessed_on": "2026-09-25",
+  "rubric": [
+    {
+      "id": "loop",
+      "name": [
+        "核心玩法与需求对齐",
+        "Core loop and requirements"
+      ],
+      "max": 30
+    },
+    {
+      "id": "usability",
+      "name": [
+        "可玩性、输入与引导",
+        "Playability, controls and guidance"
+      ],
+      "max": 25
+    },
+    {
+      "id": "reliability",
+      "name": [
+        "稳定性与测试证据",
+        "Reliability and test evidence"
+      ],
+      "max": 20
+    },
+    {
+      "id": "presentation",
+      "name": [
+        "MVP 视听反馈与一致性",
+        "MVP audiovisual feedback and coherence"
+      ],
+      "max": 15
+    },
+    {
+      "id": "recoverability",
+      "name": [
+        "版本可追溯与可交付性",
+        "Traceability and recoverability"
+      ],
+      "max": 10
+    }
+  ],
+  "reviews": [
+    {
+      "id": "legacy-daynight",
+      "name": [
+        "现有基线 · 魔法与昼夜生态版",
+        "Existing baseline · magic and day/night ecology"
+      ],
+      "reviewer_type": "AI",
+      "reviewer": "ChatGPT",
+      "review_kind": "authored_evidence_based_judgment",
+      "scope": "existing MVP baseline",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "points": [
+        25,
+        18,
+        12,
+        10,
+        7
+      ],
+      "reasons": [
+        [
+          "建造、魔法、食物与昼夜形成有联系的互动；首分钟目标和成长动机仍可加强。",
+          "Building, magic, food and day/night connect; first-minute goals and progression motivation need strengthening."
+        ],
+        [
+          "已实现触屏与纯键盘分支；无完整新设备验收，复杂操作还需清晰引导。",
+          "Touch and keyboard paths exist; comprehensive current-device acceptance and clearer control guidance remain."
+        ],
+        [
+          "源码与修复日志可核对，但原测试原始回执不齐，不能按历史宣传打满分。",
+          "Source and repair logs are inspectable, but raw historical test evidence is incomplete."
+        ],
+        [
+          "程序化世界和即时声画反馈可支撑MVP，正式故事与资产仍未制作。",
+          "Procedural visuals/feedback support an MVP; production story/assets remain unbuilt."
+        ],
+        [
+          "可保存建筑且Git里保留迭代，重制需独立存档和版本登记。",
+          "Saved creations and Git iterations exist; remakes need isolated saves/version registration."
+        ]
+      ],
+      "total": 72,
+      "stars": 3.6,
+      "strength": [
+        "“魔法改变世界”和抓烤吃循环具有作品自己的方向。",
+        "World-changing magic and the catch/cook/eat loop give the work its own direction."
+      ],
+      "risk": [
+        "有功能不等于完整游戏设计；旧测试报告缺失，不能夸成全部实机通过。",
+        "Features do not equal complete game design; missing reports prevent full-device claims."
+      ],
+      "next_test": [
+        "按正常流程建造、存取、抓烤吃、昼夜打怪；在真实iPad验证操作和反馈。",
+        "Test normal building/saves, fish cooking, day/night combat and real-iPad controls/feedback."
+      ],
+      "evidence": [
+        "A-HISTORY",
+        "A-README",
+        "A-MAGIC"
+      ],
+      "final_device_acceptance": false
+    }
+  ],
+  "sources": {
+    "A-HISTORY": {
+      "path": "DEVLOG.md",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "a5595efcf5b4f0b76700a106ce5db3e08af728d679c5b6d54c4d66c51f28cce6",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/DEVLOG.md",
+      "title": [
+        "DEVLOG.md",
+        "DEVLOG.md"
+      ]
+    },
+    "A-README": {
+      "path": "README.md",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "700c5767d268ee88920916e8eff6d5c4d7943b58fff5d0d7e75727483f3979a8",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/README.md",
+      "title": [
+        "README.md",
+        "README.md"
+      ]
+    },
+    "A-MAGIC": {
+      "path": "src/magic.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/magic.js",
+      "title": [
+        "src/magic.js",
+        "src/magic.js"
+      ]
+    },
+    "A-CREATURES": {
+      "path": "src/creatures.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/creatures.js",
+      "title": [
+        "src/creatures.js",
+        "src/creatures.js"
+      ]
+    },
+    "A-DAYNIGHT": {
+      "path": "src/daynight.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/daynight.js",
+      "title": [
+        "src/daynight.js",
+        "src/daynight.js"
+      ]
+    },
+    "A-MONSTERS": {
+      "path": "src/monsters.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/monsters.js",
+      "title": [
+        "src/monsters.js",
+        "src/monsters.js"
+      ]
+    },
+    "A-WALK": {
+      "path": "src/walk.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/walk.js",
+      "title": [
+        "src/walk.js",
+        "src/walk.js"
+      ]
+    },
+    "A-SAVE": {
+      "path": "src/storage.js",
+      "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+      "sha256": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+      "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/storage.js",
+      "title": [
+        "src/storage.js",
+        "src/storage.js"
+      ]
+    },
+    "PREP": {
+      "path": "hub/preparation.json",
+      "source_ref": null,
+      "sha256": null,
+      "href": "preparation.json",
+      "title": [
+        "本轮准备清单",
+        "This preparation manifest"
+      ]
+    }
+  },
+  "future_candidates_unrated": [
+    "remake-opus",
+    "remake-astra"
+  ]
+}

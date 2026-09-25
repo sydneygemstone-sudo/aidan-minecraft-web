@@ -1,0 +1,95 @@
+{
+  "budget_aud": 50,
+  "api_equivalent_aud": 38,
+  "range": [
+    19,
+    68
+  ],
+  "recorded_estimate": 18,
+  "planned_reserve": 20,
+  "actual_metered_aud": null,
+  "items": [
+    {
+      "title": [
+        "9/12 创建、输入与分发修订",
+        "12 Sep creation, input and delivery revisions"
+      ],
+      "aud": 6,
+      "range": [
+        3,
+        10
+      ],
+      "note": [
+        "无原Token账单，按记录中的范围给工具等值估算。",
+        "No metered token bill; scope-based tool-equivalent estimate."
+      ],
+      "kind": "estimate"
+    },
+    {
+      "title": [
+        "9/19 魔法、食物与昼夜生态",
+        "19 Sep magic, food and ecology"
+      ],
+      "aud": 8,
+      "range": [
+        4,
+        16
+      ],
+      "note": [
+        "按两个有源码提交的扩展阶段估算，不按旧帧率宣传估值。",
+        "Estimate for two source-backed expansion stages, not historical performance claims."
+      ],
+      "kind": "estimate"
+    },
+    {
+      "title": [
+        "本次HUB回收与适配",
+        "This HUB recovery/adaptation"
+      ],
+      "aud": 4,
+      "range": [
+        2,
+        6
+      ],
+      "note": [
+        "本次整理、展示、分支入口和检查的工具等值预估。",
+        "Tool-equivalent estimate for this recovery, UI, branch entries and checks."
+      ],
+      "kind": "estimate"
+    },
+    {
+      "title": [
+        "Opus独立重制规划预留",
+        "Opus independent remake reserve"
+      ],
+      "aud": 10,
+      "range": [
+        5,
+        18
+      ],
+      "kind": "reserve",
+      "note": [
+        "尚未执行；仅为制作前预算草案，可随锁定范围调整，不计作已消耗。",
+        "Not executed; provisional scope-dependent reservation, not consumed usage."
+      ]
+    },
+    {
+      "title": [
+        "Astra独立重制规划预留",
+        "Astra independent remake reserve"
+      ],
+      "aud": 10,
+      "range": [
+        5,
+        18
+      ],
+      "kind": "reserve",
+      "note": [
+        "尚未执行；仅为制作前预算草案，可随锁定范围调整，不计作已消耗。",
+        "Not executed; provisional scope-dependent reservation, not consumed usage."
+      ]
+    }
+  ],
+  "model": "bounded historical estimates plus explicit future reserves",
+  "total_tokens": null
+}

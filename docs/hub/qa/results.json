@@ -1,0 +1,477 @@
+{
+  "revision": "r6-preclass-20260926",
+  "mode": "local",
+  "project": "aidan",
+  "scope": "Existing game startup/startup screenshot plus HUB, plans, language, diagrams, budgets and form checks. Not a remake implementation or full game acceptance.",
+  "checks": [
+    {
+      "name": "Existing baseline renders real canvas",
+      "status": "PASS"
+    },
+    {
+      "name": "Baseline startup has no JavaScript errors",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Preview returns directly to this HUB",
+      "status": "PASS"
+    },
+    {
+      "name": "index zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "index zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "index zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "index zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Two planned remakes visible",
+      "status": "PASS"
+    },
+    {
+      "name": "No rating or game launch invented for planned candidates",
+      "status": "PASS"
+    },
+    {
+      "name": "Four native R6 metrics retained",
+      "status": "PASS"
+    },
+    {
+      "name": "Three-stage plan and correct new-work progress",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing baseline separate from remakes",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Both task panels exist",
+      "status": "PASS"
+    },
+    {
+      "name": "Copy task uses correct project and execution gate",
+      "status": "PASS"
+    },
+    {
+      "name": "development zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "development zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "development zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "development zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Only real baseline has AI review",
+      "status": "PASS"
+    },
+    {
+      "name": "costs zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "costs zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "costs zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "costs zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "guide zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "guide zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "guide zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "guide zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "parents zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "parents zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "parents zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "parents zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "review zh-CN renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "review zh-CN no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "review zh-CN desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "review zh-CN target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "index en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "index en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "index en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "index en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Two planned remakes visible",
+      "status": "PASS"
+    },
+    {
+      "name": "No rating or game launch invented for planned candidates",
+      "status": "PASS"
+    },
+    {
+      "name": "Four native R6 metrics retained",
+      "status": "PASS"
+    },
+    {
+      "name": "Three-stage plan and correct new-work progress",
+      "status": "PASS"
+    },
+    {
+      "name": "Existing baseline separate from remakes",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Both task panels exist",
+      "status": "PASS"
+    },
+    {
+      "name": "Copy task uses correct project and execution gate",
+      "status": "PASS"
+    },
+    {
+      "name": "development en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "development en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "development en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "development en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "comparison en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "Only real baseline has AI review",
+      "status": "PASS"
+    },
+    {
+      "name": "costs en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "costs en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "costs en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "costs en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "guide en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "guide en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "guide en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "guide en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "parents en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "parents en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "parents en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "parents en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "review en renders project content",
+      "status": "PASS"
+    },
+    {
+      "name": "review en no wrong student or fake completion",
+      "status": "PASS"
+    },
+    {
+      "name": "review en desktop fits",
+      "status": "PASS"
+    },
+    {
+      "name": "review en target-language toggle",
+      "status": "PASS"
+    },
+    {
+      "name": "index fits 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "index language visible after scroll 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild fits 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild language visible after scroll 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "costs fits 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "costs language visible after scroll 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "review fits 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "review language visible after scroll 1024",
+      "status": "PASS"
+    },
+    {
+      "name": "index fits 768",
+      "status": "PASS"
+    },
+    {
+      "name": "index language visible after scroll 768",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild fits 768",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild language visible after scroll 768",
+      "status": "PASS"
+    },
+    {
+      "name": "costs fits 768",
+      "status": "PASS"
+    },
+    {
+      "name": "costs language visible after scroll 768",
+      "status": "PASS"
+    },
+    {
+      "name": "review fits 768",
+      "status": "PASS"
+    },
+    {
+      "name": "review language visible after scroll 768",
+      "status": "PASS"
+    },
+    {
+      "name": "index fits 390",
+      "status": "PASS"
+    },
+    {
+      "name": "index language visible after scroll 390",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild fits 390",
+      "status": "PASS"
+    },
+    {
+      "name": "rebuild language visible after scroll 390",
+      "status": "PASS"
+    },
+    {
+      "name": "costs fits 390",
+      "status": "PASS"
+    },
+    {
+      "name": "costs language visible after scroll 390",
+      "status": "PASS"
+    },
+    {
+      "name": "review fits 390",
+      "status": "PASS"
+    },
+    {
+      "name": "review language visible after scroll 390",
+      "status": "PASS"
+    },
+    {
+      "name": "Language switch retains draft and reviewer",
+      "status": "PASS"
+    },
+    {
+      "name": "Language switch retains page hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Feedback JSON roundtrip",
+      "status": "PASS"
+    },
+    {
+      "name": "All local page/asset/diagram/task links exist",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Original game files unchanged",
+      "status": "PASS",
+      "detail": []
+    },
+    {
+      "name": "Neither remake was executed or pre-rated",
+      "status": "PASS"
+    },
+    {
+      "name": "Budget forecast is sum, reservations not spend",
+      "status": "PASS"
+    },
+    {
+      "name": "No HUB runtime exceptions",
+      "status": "PASS",
+      "detail": []
+    }
+  ],
+  "failures": [],
+  "started": "2026-09-25T12:24:37.900Z",
+  "baseline_rendering": "Normal rendering loop used for startup/screenshot only; not a normal-path or performance test.",
+  "finished": "2026-09-25T12:24:49.916Z",
+  "status": "PASS"
+}

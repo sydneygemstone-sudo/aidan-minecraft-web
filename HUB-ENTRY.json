@@ -1,0 +1,14 @@
+{
+  "project": "aidan",
+  "canonical_hub": "hub/",
+  "site_root": "docs",
+  "revision": "r6-preclass-20260926",
+  "status": "PREPARED_NOT_EXECUTED",
+  "upstream_template_repository": "sydneygemstone-sudo/student-works",
+  "upstream_commit": "ddb6d1f078e7013cfb9d082416a7083463b85cc6",
+  "upstream_standard": "CLASSROOM-HUB-R5-20260923",
+  "upstream_lifecycle_revision": "hub-r6-lifecycle-20260925",
+  "sources": "hub/preparation.json",
+  "remake_manifest": "rebuild/manifest.json",
+  "no_fallback": "Never import another student’s completion, selected model or game state."
+}

@@ -1,0 +1,2241 @@
+{
+  "release": "r6-preclass-20260926",
+  "classDate": "2026-09-26",
+  "projects": {
+    "aidan": {
+      "name": "Aidan",
+      "people_names": [
+        "Aidan"
+      ],
+      "title": [
+        "Aidan 的魔法方块世界",
+        "Aidan’s Magic Block World"
+      ],
+      "heroTitle": [
+        "魔法，真的改变世界<br><em>Aidan · 两路重制准备</em>",
+        "Magic that changes the world<br><em>Aidan · remake preparation</em>"
+      ],
+      "intro": [
+        "从自由建造，走到火焰、水与食物循环，再走进昼夜生态。这次先保存已经想清楚的规则，为 Opus 和 Astra 准备同一份重制需求；新版尚未制作。",
+        "From free building to fire, water and food, then day/night ecology. Preserve the rules already developed and prepare one shared brief for Opus and Astra. The remakes have not been built."
+      ],
+      "theme": "forest",
+      "budget": 50,
+      "legacy_name": [
+        "现有基线 · 魔法与昼夜生态版",
+        "Existing baseline · magic and day/night ecology"
+      ],
+      "learning": [
+        {
+          "title": [
+            "把“不够好”说成可实现的缺口",
+            "Turn “not good enough” into a concrete gap"
+          ],
+          "practice": [
+            "“水里什么都没有”引出了水下生命和互动，而非盲目加方块。",
+            "“There is nothing in the water” led to aquatic life/interactions rather than more block types."
+          ],
+          "knowledge": [
+            "需求应描述缺失体验及可观察结果。",
+            "Requirements describe a missing experience and observable result."
+          ],
+          "expression": [
+            "我在……看到了……；我希望能做……，完成后应该看到……。",
+            "At … I observed …; I want to do … and then see …."
+          ],
+          "level": [
+            "来自仓库课堂纪要的复盘；不视为完整逐字稿或独立掌握证明。",
+            "Retrospective from repository lesson notes, not a complete transcript or proof of independent mastery."
+          ]
+        },
+        {
+          "title": [
+            "先问用途，再决定功能",
+            "Ask its purpose before adding a feature"
+          ],
+          "practice": [
+            "讨论“挖穿基岩”时发现没有形成玩法目标，选择不做。",
+            "Bedrock digging had no gameplay purpose and was excluded."
+          ],
+          "knowledge": [
+            "范围控制：功能数量不等于玩法价值。",
+            "Scope control: feature count is not gameplay value."
+          ],
+          "expression": [
+            "这个功能让玩家做什么决定？不用它，会失去什么体验？",
+            "What decision does this feature create? What experience is lost without it?"
+          ],
+          "level": [
+            "来自仓库课堂纪要的复盘；不视为完整逐字稿或独立掌握证明。",
+            "Retrospective from repository lesson notes, not a complete transcript or proof of independent mastery."
+          ]
+        },
+        {
+          "title": [
+            "资源状态接成闭环",
+            "Connect resource states into a loop"
+          ],
+          "practice": [
+            "鱼从水里被抓到、放下、烤熟、拾取并食用。",
+            "Fish move from water to catch, placement, cooking, pickup and consumption."
+          ],
+          "knowledge": [
+            "状态转换与反馈必须一致；不能按钮变化却没有真实资源变化。",
+            "State transitions and feedback must agree; UI changes are not resource changes."
+          ],
+          "expression": [
+            "先得到A，把A通过B变成C；C如何帮助下一轮行动？",
+            "Obtain A, use B to turn it into C; how does C help the next action?"
+          ],
+          "level": [
+            "来自仓库课堂纪要的复盘；不视为完整逐字稿或独立掌握证明。",
+            "Retrospective from repository lesson notes, not a complete transcript or proof of independent mastery."
+          ]
+        },
+        {
+          "title": [
+            "区分地形高度和可走的地面",
+            "Terrain height differs from walkable ground"
+          ],
+          "practice": [
+            "代码记录树下生物会把树冠当脚下地面，后来修正行走判定。",
+            "The recorded bug treated treetops as ground beneath creatures; walking checks were revised."
+          ],
+          "knowledge": [
+            "边界条件、碰撞与导航；技术解释来自代码，不冒称课堂已全部教完。",
+            "Boundary conditions, collisions and navigation; this explanation comes from code, not a claim of full classroom mastery."
+          ],
+          "expression": [
+            "在什么位置会卡住？脚下是哪种方块？修完怎样证明没有回归？",
+            "Where does it get stuck, what block is underfoot, and how do we retest?"
+          ],
+          "level": [
+            "来自仓库课堂纪要的复盘；不视为完整逐字稿或独立掌握证明。",
+            "Retrospective from repository lesson notes, not a complete transcript or proof of independent mastery."
+          ]
+        }
+      ],
+      "id": "aidan",
+      "preparation_revision": "r6-preclass-20260926",
+      "hero": "assets/baseline.png",
+      "legacy_tag": "legacy-daynight",
+      "branches": [
+        {
+          "key": "remake-opus",
+          "name": [
+            "Opus 独立重制",
+            "Opus independent remake"
+          ],
+          "tool": "Opus",
+          "status": "planned",
+          "legacy": false,
+          "path": null,
+          "task_file": "../rebuild/opus/task.txt",
+          "scores": null,
+          "tokens": null,
+          "aud": 0,
+          "planned_reserve_aud": 10,
+          "subtitle": [
+            "共享已回收的需求与验收；实现方法由该模型独立选择。",
+            "Shared recovered requirements/acceptance, independently chosen implementation."
+          ],
+          "deliverable": null
+        },
+        {
+          "key": "remake-astra",
+          "name": [
+            "Astra 独立重制",
+            "Astra independent remake"
+          ],
+          "tool": "Astra",
+          "status": "planned",
+          "legacy": false,
+          "path": null,
+          "task_file": "../rebuild/astra/task.txt",
+          "scores": null,
+          "tokens": null,
+          "aud": 0,
+          "planned_reserve_aud": 10,
+          "subtitle": [
+            "共享已回收的需求与验收；实现方法由该模型独立选择。",
+            "Shared recovered requirements/acceptance, independently chosen implementation."
+          ],
+          "deliverable": null
+        },
+        {
+          "key": "legacy-daynight",
+          "name": [
+            "现有基线 · 魔法与昼夜生态版",
+            "Existing baseline · magic and day/night ecology"
+          ],
+          "tool": "Historical",
+          "status": "baseline",
+          "legacy": true,
+          "path": "../play/",
+          "image": "assets/baseline.png",
+          "tokens": null,
+          "scores": null,
+          "aud": 14,
+          "strength": [
+            "“魔法改变世界”和抓烤吃循环具有作品自己的方向。",
+            "World-changing magic and the catch/cook/eat loop give the work its own direction."
+          ],
+          "limit": [
+            "有功能不等于完整游戏设计；旧测试报告缺失，不能夸成全部实机通过。",
+            "Features do not equal complete game design; missing reports prevent full-device claims."
+          ],
+          "release": [
+            "9月19日旧版，供课前试玩对照",
+            "19 September baseline for pre-class comparison"
+          ]
+        }
+      ],
+      "cost": {
+        "budget_aud": 50,
+        "api_equivalent_aud": 38,
+        "range": [
+          19,
+          68
+        ],
+        "recorded_estimate": 18,
+        "planned_reserve": 20,
+        "actual_metered_aud": null,
+        "items": [
+          {
+            "title": [
+              "9/12 创建、输入与分发修订",
+              "12 Sep creation, input and delivery revisions"
+            ],
+            "aud": 6,
+            "range": [
+              3,
+              10
+            ],
+            "note": [
+              "无原Token账单，按记录中的范围给工具等值估算。",
+              "No metered token bill; scope-based tool-equivalent estimate."
+            ],
+            "kind": "estimate"
+          },
+          {
+            "title": [
+              "9/19 魔法、食物与昼夜生态",
+              "19 Sep magic, food and ecology"
+            ],
+            "aud": 8,
+            "range": [
+              4,
+              16
+            ],
+            "note": [
+              "按两个有源码提交的扩展阶段估算，不按旧帧率宣传估值。",
+              "Estimate for two source-backed expansion stages, not historical performance claims."
+            ],
+            "kind": "estimate"
+          },
+          {
+            "title": [
+              "本次HUB回收与适配",
+              "This HUB recovery/adaptation"
+            ],
+            "aud": 4,
+            "range": [
+              2,
+              6
+            ],
+            "note": [
+              "本次整理、展示、分支入口和检查的工具等值预估。",
+              "Tool-equivalent estimate for this recovery, UI, branch entries and checks."
+            ],
+            "kind": "estimate"
+          },
+          {
+            "title": [
+              "Opus独立重制规划预留",
+              "Opus independent remake reserve"
+            ],
+            "aud": 10,
+            "range": [
+              5,
+              18
+            ],
+            "kind": "reserve",
+            "note": [
+              "尚未执行；仅为制作前预算草案，可随锁定范围调整，不计作已消耗。",
+              "Not executed; provisional scope-dependent reservation, not consumed usage."
+            ]
+          },
+          {
+            "title": [
+              "Astra独立重制规划预留",
+              "Astra independent remake reserve"
+            ],
+            "aud": 10,
+            "range": [
+              5,
+              18
+            ],
+            "kind": "reserve",
+            "note": [
+              "尚未执行；仅为制作前预算草案，可随锁定范围调整，不计作已消耗。",
+              "Not executed; provisional scope-dependent reservation, not consumed usage."
+            ]
+          }
+        ],
+        "model": "bounded historical estimates plus explicit future reserves",
+        "total_tokens": null
+      },
+      "human": {
+        "hours_range": [
+          31,
+          55
+        ],
+        "hours_mid": 43.0,
+        "aud_range": [
+          1966.6399999999999,
+          3489.2
+        ],
+        "aud_mid": 2727.92,
+        "scope": [
+          "同等核心范围的一次人工重建规划，不将两条模型工作量简单相加。",
+          "Estimate one manual rebuild of equivalent core scope, not a mechanical sum of model branches."
+        ]
+      },
+      "human_tasks": [
+        {
+          "task": [
+            "需求与核心循环",
+            "Requirements and loop"
+          ],
+          "range": [
+            3,
+            5
+          ]
+        },
+        {
+          "task": [
+            "体素世界与互动",
+            "Voxel world and interactions"
+          ],
+          "range": [
+            10,
+            18
+          ]
+        },
+        {
+          "task": [
+            "输入与保存",
+            "Input and persistence"
+          ],
+          "range": [
+            5,
+            9
+          ]
+        },
+        {
+          "task": [
+            "魔法、生态与昼夜",
+            "Magic, ecology and day/night"
+          ],
+          "range": [
+            8,
+            14
+          ]
+        },
+        {
+          "task": [
+            "检查与作品档案",
+            "Testing and project record"
+          ],
+          "range": [
+            5,
+            9
+          ]
+        }
+      ],
+      "efficiency": {
+        "time_ratio_mid": null,
+        "cost_ratio_mid": null
+      },
+      "cost_note": [
+        "完整预算池沿用课堂项目规则；历史及本次HUB为有界估算，两路制作仅预留，尚未产生实际模型费用。真实账单回收后替换估算，不能把预留算成已消费。",
+        "The pool follows the classroom-project rule. History/current HUB use bounded estimates; future model work is reserved, not consumed. Replace estimates with bills when available."
+      ],
+      "rate_note": [
+        "沿用R6的A$63.44/h历史规划参数，不是工资或实时市场报价。",
+        "Uses the historical R6 A$63.44/hour planning parameter, not wages or live market pricing."
+      ],
+      "lifecycle": {
+        "revision": "r6-preclass-20260926",
+        "current_phase": "mvp",
+        "overall_basis": "three_phase_equal_weight_gate_index",
+        "overall_label": [
+          "三阶段总进度 · 里程碑口径",
+          "Overall progress · three-phase milestone index"
+        ],
+        "formula": [
+          "总进度 = (MVP完成率 + 资产完成率 + 发布运营准备完成率) ÷ 3。三个阶段等权；每阶段内部只数已完成的验收项。不表示工时、花费或日历时间占比。",
+          "Overall = (MVP gate completion + asset gate completion + release/operations readiness completion) / 3. Phases have equal weight; only completed gates count within a phase. This is not labour, spending or elapsed-time percentage."
+        ],
+        "not_authorized_for_execution": true,
+        "phases": [
+          {
+            "id": "mvp",
+            "name": [
+              "MVP 核心玩法定稿",
+              "MVP core-gameplay freeze"
+            ],
+            "weight": 0.3333333333333333,
+            "state": "active",
+            "goal": [
+              "先把核心玩法真正做通、选定主线并验证稳定。",
+              "Make the core loop work, select the mainline and verify it."
+            ],
+            "exit": [
+              "最终测试通过，固定 MVP 基线。",
+              "Pass the final test and freeze the MVP baseline."
+            ],
+            "gates": [
+              {
+                "id": "m1",
+                "title": [
+                  "原需求、反馈与限制回收",
+                  "Recover original requirements, feedback and limits"
+                ],
+                "deliverable": [
+                  "以已有课堂纪要与源码为依据；新课堂意见之后再归入本作品。",
+                  "Grounded in existing notes/source; new lesson input will be added later."
+                ],
+                "status": "complete",
+                "evidence": [
+                  "A-HISTORY",
+                  "PREP"
+                ]
+              },
+              {
+                "id": "m2",
+                "title": [
+                  "共同核心规则与验收草案",
+                  "Shared core rules and acceptance draft"
+                ],
+                "deliverable": [
+                  "保留已有核心循环，列出课内需要确认的变化；不是宣称新玩法已定稿。",
+                  "Retain the core loop and identify changes to confirm in class; this is not a final new-game specification."
+                ],
+                "status": "complete",
+                "evidence": [
+                  "A-HISTORY",
+                  "PREP"
+                ]
+              },
+              {
+                "id": "m3",
+                "title": [
+                  "可操作 MVP 原型",
+                  "Build an operable MVP"
+                ],
+                "deliverable": [
+                  "Opus/Astra分别提交可操作原型，当前两条都尚未实现。",
+                  "Opus/Astra each deliver an operable prototype; both are currently unbuilt."
+                ],
+                "status": "pending",
+                "evidence": []
+              },
+              {
+                "id": "m4",
+                "title": [
+                  "分支评审与主线收敛",
+                  "Review branches and choose a mainline"
+                ],
+                "deliverable": [
+                  "明确当前主线与对照版本；选择不冒充源码合并。",
+                  "Identify mainline and comparisons; selection is not source merging."
+                ],
+                "status": "pending",
+                "evidence": []
+              },
+              {
+                "id": "m5",
+                "title": [
+                  "试玩入口与操作适配",
+                  "Adapt play entry and controls"
+                ],
+                "deliverable": [
+                  "双语、单机、返回与本机保存；需要时加联机测试入口。",
+                  "Language, solo, return and saves; an online test entry where needed."
+                ],
+                "status": "pending",
+                "evidence": []
+              },
+              {
+                "id": "m6",
+                "title": [
+                  "自动回归、缺陷与证据归档",
+                  "Automated regression and evidence"
+                ],
+                "deliverable": [
+                  "已执行的测试、失败记录和修复来源可读回。",
+                  "Executed checks, failures and repair provenance can be retrieved."
+                ],
+                "status": "pending",
+                "evidence": []
+              },
+              {
+                "id": "m7",
+                "title": [
+                  "最终正常流程测试 → MVP 定稿",
+                  "Final normal-path test → MVP freeze"
+                ],
+                "deliverable": [
+                  "真实设备完整通关、关键边界与恢复测试；确认后固定核心范围，不再任意扩展。",
+                  "Full physical-device normal flow, key boundaries and recovery; then freeze core scope."
+                ],
+                "status": "pending",
+                "evidence": []
+              }
+            ],
+            "completed_gates": 2,
+            "total_gates": 7,
+            "completion_percent": 28.571428571428573
+          },
+          {
+            "id": "assets",
+            "name": [
+              "完整资产与视听呈现",
+              "Complete assets and audiovisual experience"
+            ],
+            "weight": 0.3333333333333333,
+            "state": "planned",
+            "depends_on": "mvp",
+            "goal": [
+              "补足故事与引导，强化视觉，把音乐、音效和配音制作成完整资产。",
+              "Complete story/guidance, strengthen visuals and produce full music, sound and voice assets."
+            ],
+            "exit": [
+              "完整资产包与故事体验集成验收通过。",
+              "Pass integrated full-asset and story-experience acceptance."
+            ],
+            "gates": [
+              {
+                "id": "a1",
+                "title": [
+                  "完整故事线",
+                  "Complete storyline"
+                ],
+                "deliverable": [
+                  "世界设定、角色动机、章节、冲突、结局与任务逻辑补足。",
+                  "Complete world, motives, chapters, conflict, ending and quest logic."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a2",
+                "title": [
+                  "完整引导与可理解性",
+                  "Complete guidance and comprehension"
+                ],
+                "deliverable": [
+                  "新手教学、目标提示、失败/返回引导及双语文案成套验证。",
+                  "Validate onboarding, objectives, failure/recovery guidance and bilingual copy."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a3",
+                "title": [
+                  "资产规格与清单",
+                  "Asset specification and inventory"
+                ],
+                "deliverable": [
+                  "锁定风格、格式、性能预算、文件命名、版本和授权来源。",
+                  "Define style, formats, performance budgets, naming, versions and provenance."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a4",
+                "title": [
+                  "视觉资产与动画特效",
+                  "Visual assets, animation and effects"
+                ],
+                "deliverable": [
+                  "角色、场景、界面、道具、动画、技能与反馈资产完整替换/强化。",
+                  "Complete characters, environments, UI, props, animation, skills and feedback assets."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a5",
+                "title": [
+                  "音乐资产",
+                  "Music assets"
+                ],
+                "deliverable": [
+                  "场景/情绪/战斗/结局音乐、循环与混音，形成可复用资产。",
+                  "Produce reusable scene, mood, combat and ending music, loops and mixes."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a6",
+                "title": [
+                  "音效资产",
+                  "Sound-effect assets"
+                ],
+                "deliverable": [
+                  "动作、交互、环境、能力和 UI 提示音齐备，控制响度与触发逻辑。",
+                  "Complete action, interaction, ambient, ability and UI sounds, loudness and triggers."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a7",
+                "title": [
+                  "配音与角色声音",
+                  "Voice and character audio"
+                ],
+                "deliverable": [
+                  "旁白/角色/引导台词、授权、双语发音和字幕，对话音频资产化。",
+                  "Assetize narration, dialogue and guidance with consent, bilingual pronunciation and subtitles."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "a8",
+                "title": [
+                  "视听集成与整体验收",
+                  "Integrated audiovisual acceptance"
+                ],
+                "deliverable": [
+                  "全量资产装配、故事体验、音量可控、加载性能与多端回归。",
+                  "Integrate all assets, story experience, audio controls, loading performance and device regression."
+                ],
+                "status": "planned",
+                "evidence": []
+              }
+            ],
+            "completed_gates": 0,
+            "total_gates": 8,
+            "completion_percent": 0.0
+          },
+          {
+            "id": "release",
+            "name": [
+              "平台发布、销售与长期运营",
+              "Platform release, sales and long-term operations"
+            ],
+            "weight": 0.3333333333333333,
+            "state": "planned",
+            "depends_on": "assets",
+            "goal": [
+              "从作品变为能发布、交付、支持与持续运营的产品。",
+              "Turn the work into a product that can launch, deliver, support and operate."
+            ],
+            "exit": [
+              "完成正式发布并建立持续服务能力；运营本身不以100%表示永远结束。",
+              "Launch and establish continuing service capability; 100% readiness does not end ongoing operations."
+            ],
+            "gates": [
+              {
+                "id": "r1",
+                "title": [
+                  "发行与商业方案",
+                  "Release and commercial plan"
+                ],
+                "deliverable": [
+                  "选择实际平台、目标受众、销售/免费模式和服务边界。",
+                  "Choose platforms, audiences, paid/free model and service scope."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "r2",
+                "title": [
+                  "授权、隐私与平台要求",
+                  "Rights, privacy and platform requirements"
+                ],
+                "deliverable": [
+                  "核对资产许可、商店规则、儿童数据、隐私告知与删除机制。",
+                  "Verify asset rights, store requirements, children’s data, notices and deletion mechanisms."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "r3",
+                "title": [
+                  "发行构建与兼容验收",
+                  "Release builds and compatibility"
+                ],
+                "deliverable": [
+                  "发行包、安装/升级、设备兼容、稳定性、安全与恢复检查。",
+                  "Test release packages, installation/upgrades, compatibility, stability, security and recovery."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "r4",
+                "title": [
+                  "商店与宣传素材",
+                  "Store and marketing material"
+                ],
+                "deliverable": [
+                  "商品页、图文/视频、价格、帮助说明与支持入口完成。",
+                  "Complete listing, screenshots/video, pricing, help and support entry."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "r5",
+                "title": [
+                  "正式平台销售发布",
+                  "Production platform/sales launch"
+                ],
+                "deliverable": [
+                  "完成平台发布与购买/访问/交付路径验证，而非只有测试网址。",
+                  "Launch and verify purchase/access/delivery paths, not only a test URL."
+                ],
+                "status": "planned",
+                "evidence": []
+              },
+              {
+                "id": "r6",
+                "title": [
+                  "长期服务运营准备",
+                  "Long-term service readiness"
+                ],
+                "deliverable": [
+                  "监控、成本、备份恢复、客服、内容更新和事故处理可执行；之后按运行指标持续管理。",
+                  "Make monitoring, costs, backup/recovery, support, updates and incident handling operational; then track ongoing service metrics."
+                ],
+                "status": "planned",
+                "evidence": []
+              }
+            ],
+            "completed_gates": 0,
+            "total_gates": 6,
+            "completion_percent": 0.0
+          }
+        ],
+        "coverage_note": [
+          "这里计算本轮两路重制的里程碑，不是把旧版完成度重置。第二阶段故事与完整资产、第三阶段发布运营尚未进入；现有原型视觉与声音不冒充正式资产包。",
+          "This measures the two-remake workflow, not a reset of historical work. Full story/assets and release/operations are later phases; prototype visuals/audio are not a finished asset package."
+        ],
+        "phase1_final_tests": [
+          "两条新候选完成后，各自正常流程测试，再做AI评审收敛和最终MVP验收。",
+          "After both candidates exist, test normally, perform AI evidence review, converge and finally accept the MVP."
+        ],
+        "overall_percent": 9.523809523809524,
+        "current_note": [
+          "当前只完成原需求回收与核心规则归纳（2/7）；Opus/Astra尚未制作、未比较、未最终测试。旧版成果保留在历史区，不因重制而被抹去。",
+          "Only original requirements and core-rule synthesis are prepared (2/7). Opus/Astra are unbuilt, unreviewed and not finally tested. The baseline is retained in history, not erased."
+        ]
+      },
+      "ai_reviews": {
+        "revision": "r6-preclass-20260926",
+        "reviewer_type": "AI",
+        "assessed_on": "2026-09-25",
+        "rubric": [
+          {
+            "id": "loop",
+            "name": [
+              "核心玩法与需求对齐",
+              "Core loop and requirements"
+            ],
+            "max": 30
+          },
+          {
+            "id": "usability",
+            "name": [
+              "可玩性、输入与引导",
+              "Playability, controls and guidance"
+            ],
+            "max": 25
+          },
+          {
+            "id": "reliability",
+            "name": [
+              "稳定性与测试证据",
+              "Reliability and test evidence"
+            ],
+            "max": 20
+          },
+          {
+            "id": "presentation",
+            "name": [
+              "MVP 视听反馈与一致性",
+              "MVP audiovisual feedback and coherence"
+            ],
+            "max": 15
+          },
+          {
+            "id": "recoverability",
+            "name": [
+              "版本可追溯与可交付性",
+              "Traceability and recoverability"
+            ],
+            "max": 10
+          }
+        ],
+        "reviews": [
+          {
+            "id": "legacy-daynight",
+            "name": [
+              "现有基线 · 魔法与昼夜生态版",
+              "Existing baseline · magic and day/night ecology"
+            ],
+            "reviewer_type": "AI",
+            "reviewer": "ChatGPT",
+            "review_kind": "authored_evidence_based_judgment",
+            "scope": "existing MVP baseline",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "points": [
+              25,
+              18,
+              12,
+              10,
+              7
+            ],
+            "reasons": [
+              [
+                "建造、魔法、食物与昼夜形成有联系的互动；首分钟目标和成长动机仍可加强。",
+                "Building, magic, food and day/night connect; first-minute goals and progression motivation need strengthening."
+              ],
+              [
+                "已实现触屏与纯键盘分支；无完整新设备验收，复杂操作还需清晰引导。",
+                "Touch and keyboard paths exist; comprehensive current-device acceptance and clearer control guidance remain."
+              ],
+              [
+                "源码与修复日志可核对，但原测试原始回执不齐，不能按历史宣传打满分。",
+                "Source and repair logs are inspectable, but raw historical test evidence is incomplete."
+              ],
+              [
+                "程序化世界和即时声画反馈可支撑MVP，正式故事与资产仍未制作。",
+                "Procedural visuals/feedback support an MVP; production story/assets remain unbuilt."
+              ],
+              [
+                "可保存建筑且Git里保留迭代，重制需独立存档和版本登记。",
+                "Saved creations and Git iterations exist; remakes need isolated saves/version registration."
+              ]
+            ],
+            "total": 72,
+            "stars": 3.6,
+            "strength": [
+              "“魔法改变世界”和抓烤吃循环具有作品自己的方向。",
+              "World-changing magic and the catch/cook/eat loop give the work its own direction."
+            ],
+            "risk": [
+              "有功能不等于完整游戏设计；旧测试报告缺失，不能夸成全部实机通过。",
+              "Features do not equal complete game design; missing reports prevent full-device claims."
+            ],
+            "next_test": [
+              "按正常流程建造、存取、抓烤吃、昼夜打怪；在真实iPad验证操作和反馈。",
+              "Test normal building/saves, fish cooking, day/night combat and real-iPad controls/feedback."
+            ],
+            "evidence": [
+              "A-HISTORY",
+              "A-README",
+              "A-MAGIC"
+            ],
+            "final_device_acceptance": false
+          }
+        ],
+        "sources": {
+          "A-HISTORY": {
+            "path": "DEVLOG.md",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "a5595efcf5b4f0b76700a106ce5db3e08af728d679c5b6d54c4d66c51f28cce6",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/DEVLOG.md",
+            "title": [
+              "DEVLOG.md",
+              "DEVLOG.md"
+            ]
+          },
+          "A-README": {
+            "path": "README.md",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "700c5767d268ee88920916e8eff6d5c4d7943b58fff5d0d7e75727483f3979a8",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/README.md",
+            "title": [
+              "README.md",
+              "README.md"
+            ]
+          },
+          "A-MAGIC": {
+            "path": "src/magic.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/magic.js",
+            "title": [
+              "src/magic.js",
+              "src/magic.js"
+            ]
+          },
+          "A-CREATURES": {
+            "path": "src/creatures.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/creatures.js",
+            "title": [
+              "src/creatures.js",
+              "src/creatures.js"
+            ]
+          },
+          "A-DAYNIGHT": {
+            "path": "src/daynight.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/daynight.js",
+            "title": [
+              "src/daynight.js",
+              "src/daynight.js"
+            ]
+          },
+          "A-MONSTERS": {
+            "path": "src/monsters.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/monsters.js",
+            "title": [
+              "src/monsters.js",
+              "src/monsters.js"
+            ]
+          },
+          "A-WALK": {
+            "path": "src/walk.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/walk.js",
+            "title": [
+              "src/walk.js",
+              "src/walk.js"
+            ]
+          },
+          "A-SAVE": {
+            "path": "src/storage.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/storage.js",
+            "title": [
+              "src/storage.js",
+              "src/storage.js"
+            ]
+          },
+          "PREP": {
+            "path": "hub/preparation.json",
+            "source_ref": null,
+            "sha256": null,
+            "href": "preparation.json",
+            "title": [
+              "本轮准备清单",
+              "This preparation manifest"
+            ]
+          }
+        },
+        "future_candidates_unrated": [
+          "remake-opus",
+          "remake-astra"
+        ]
+      },
+      "version_lineage": {
+        "revision": "r6-preclass-20260926",
+        "graphs": [
+          {
+            "id": "lineage",
+            "title": [
+              "历史成果与两路重制的发散收敛",
+              "Historical work and planned two-remake divergence/convergence"
+            ],
+            "direction": "TB",
+            "nodes": [
+              {
+                "id": "h0",
+                "title": [
+                  "创造与输入基线",
+                  "Creative/input baseline"
+                ],
+                "state": "archive",
+                "detail": [
+                  "源码提交 d80d7dc，保留历史；本次不改其逻辑。",
+                  "Source commit d80d7dc retained; this pass does not alter its logic."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "h1",
+                "title": [
+                  "魔法与抓烤吃",
+                  "Magic and catch/cook/eat"
+                ],
+                "state": "archive",
+                "detail": [
+                  "源码提交 4a57829，保留历史；本次不改其逻辑。",
+                  "Source commit 4a57829 retained; this pass does not alter its logic."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "h2",
+                "title": [
+                  "昼夜与地面生态",
+                  "Day/night and ground ecology"
+                ],
+                "state": "archive",
+                "detail": [
+                  "源码提交 2b22154，保留历史；本次不改其逻辑。",
+                  "Source commit 2b22154 retained; this pass does not alter its logic."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "brief",
+                "title": [
+                  "回收需求 → 共同Brief",
+                  "Recovered requirements → shared brief"
+                ],
+                "state": "decision",
+                "detail": [
+                  "基于原目标与反馈；新增机制需在课堂对齐。",
+                  "From existing goals/feedback; align new mechanics in class."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "id": "opus",
+                "title": [
+                  "Opus独立重制\n尚未开始",
+                  "Opus independent remake\nnot started"
+                ],
+                "state": "pending",
+                "detail": [
+                  "只有任务与预留目录，没有虚构游戏。",
+                  "Task/reserved path only; no fabricated game."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "id": "astra",
+                "title": [
+                  "Astra独立重制\n尚未开始",
+                  "Astra independent remake\nnot started"
+                ],
+                "state": "pending",
+                "detail": [
+                  "同一要求、独立实现。",
+                  "Same requirements, independent implementation."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "id": "review",
+                "title": [
+                  "两版各自QA → AI理据评审\n待两版真实交付",
+                  "QA each → AI evidence review\nawait actual deliveries"
+                ],
+                "state": "pending",
+                "detail": [
+                  "不是按模型名称直接宣布胜者。",
+                  "Do not pick a winner by model name."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "id": "select",
+                "title": [
+                  "主线选择 / 经批准的融合\n尚未发生",
+                  "Select mainline / approved merge\nnot yet performed"
+                ],
+                "state": "pending",
+                "detail": [
+                  "只有实施过的融合才画成代码合并。",
+                  "Only performed merges count as code merging."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "id": "freeze",
+                "title": [
+                  "最终正常流程测试\nMVP定稿待完成",
+                  "Final normal-path test\nMVP freeze pending"
+                ],
+                "state": "pending",
+                "detail": [
+                  "后续再进入完整资产与正式发布。",
+                  "Full assets and formal release follow later."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "source": "h0",
+                "target": "h1",
+                "type": "derive",
+                "label": [
+                  "已有迭代",
+                  "Existing iteration"
+                ],
+                "reason": [
+                  "实际Git记录，不是待制作的重制。",
+                  "Actual Git history, not the planned remake."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "source": "h1",
+                "target": "h2",
+                "type": "derive",
+                "label": [
+                  "已有迭代",
+                  "Existing iteration"
+                ],
+                "reason": [
+                  "实际Git记录，不是待制作的重制。",
+                  "Actual Git history, not the planned remake."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "source": "h2",
+                "target": "brief",
+                "type": "requirements",
+                "label": [
+                  "吸收需求，不强制继承旧代码",
+                  "Reuse requirements, not mandatory old code"
+                ],
+                "reason": [
+                  "重制由共同Brief驱动。",
+                  "The shared brief drives rebuilding."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "brief",
+                "target": "opus",
+                "type": "future",
+                "label": [
+                  "计划分支A",
+                  "Planned branch A"
+                ],
+                "reason": [
+                  "尚未执行，不画为完成。",
+                  "Not executed, not shown as complete."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "brief",
+                "target": "astra",
+                "type": "future",
+                "label": [
+                  "计划分支B",
+                  "Planned branch B"
+                ],
+                "reason": [
+                  "尚未执行，不提前评分。",
+                  "Not executed, not pre-rated."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "opus",
+                "target": "review",
+                "type": "future",
+                "label": [
+                  "待交付与测试",
+                  "Await delivery and QA"
+                ],
+                "reason": [
+                  "交付之后才能成为评审输入。",
+                  "Only delivered evidence enters review."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "astra",
+                "target": "review",
+                "type": "future",
+                "label": [
+                  "待交付与测试",
+                  "Await delivery and QA"
+                ],
+                "reason": [
+                  "独立验收再比较。",
+                  "Validate independently, then compare."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "review",
+                "target": "select",
+                "type": "future",
+                "label": [
+                  "待证据收敛",
+                  "Await evidence-based convergence"
+                ],
+                "reason": [
+                  "不能把计划比较写成已融合。",
+                  "Planned comparison is not an executed merge."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              },
+              {
+                "source": "select",
+                "target": "freeze",
+                "type": "future",
+                "label": [
+                  "通过后固定MVP",
+                  "Freeze after final pass"
+                ],
+                "reason": [
+                  "真实设备与正常流程。",
+                  "Physical-device and normal-path testing."
+                ],
+                "evidence": [
+                  "PREP"
+                ]
+              }
+            ],
+            "summary": [
+              "实线保留已发生迭代，虚线表示尚未制作的Opus/Astra与后续收敛；现在没有新主线胜出，也没有源码合并。",
+              "Solid edges preserve past iterations. Dashed edges represent unbuilt Opus/Astra branches and future convergence. No winner or code merge exists yet."
+            ]
+          },
+          {
+            "id": "major-repairs",
+            "title": [
+              "已有大修：问题、方向与证据边界",
+              "Historical repairs: problem, direction and evidence limits"
+            ],
+            "direction": "TB",
+            "nodes": [
+              {
+                "id": "issue0",
+                "title": [
+                  "iPad打不开 / 没有鼠标",
+                  "iPad access / no mouse"
+                ],
+                "state": "repair",
+                "detail": [
+                  "历史记录中的问题；不冒称今天重新复现。",
+                  "Historically recorded issue, not claimed as freshly reproduced."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "fix0",
+                "title": [
+                  "补触屏、键盘与静态分发",
+                  "Add touch, keyboard and static delivery"
+                ],
+                "state": "archive",
+                "detail": [
+                  "已有修订记录；新两路实现仍需独立验证。",
+                  "Recorded revision; both remakes still require independent checks."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "issue1",
+                "title": [
+                  "水里空且看不清",
+                  "Empty/dark water"
+                ],
+                "state": "repair",
+                "detail": [
+                  "历史记录中的问题；不冒称今天重新复现。",
+                  "Historically recorded issue, not claimed as freshly reproduced."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "fix1",
+                "title": [
+                  "鱼与食物循环 / 水材质可见度",
+                  "Fish/food loop / water visibility"
+                ],
+                "state": "archive",
+                "detail": [
+                  "已有修订记录；新两路实现仍需独立验证。",
+                  "Recorded revision; both remakes still require independent checks."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "issue2",
+                "title": [
+                  "树冠被当作脚下地面",
+                  "Treetop mistaken for ground"
+                ],
+                "state": "repair",
+                "detail": [
+                  "历史记录中的问题；不冒称今天重新复现。",
+                  "Historically recorded issue, not claimed as freshly reproduced."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "id": "fix2",
+                "title": [
+                  "脚下方块、台阶与绕行",
+                  "Foot-level blocks, steps and detours"
+                ],
+                "state": "archive",
+                "detail": [
+                  "已有修订记录；新两路实现仍需独立验证。",
+                  "Recorded revision; both remakes still require independent checks."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "source": "issue0",
+                "target": "fix0",
+                "type": "repair",
+                "label": [
+                  "问题 → 针对修订",
+                  "Issue → targeted revision"
+                ],
+                "reason": [
+                  "保留历史证据的范围与缺口。",
+                  "Preserve the historical scope and evidence gaps."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "source": "issue1",
+                "target": "fix1",
+                "type": "repair",
+                "label": [
+                  "问题 → 针对修订",
+                  "Issue → targeted revision"
+                ],
+                "reason": [
+                  "保留历史证据的范围与缺口。",
+                  "Preserve the historical scope and evidence gaps."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              },
+              {
+                "source": "issue2",
+                "target": "fix2",
+                "type": "repair",
+                "label": [
+                  "问题 → 针对修订",
+                  "Issue → targeted revision"
+                ],
+                "reason": [
+                  "保留历史证据的范围与缺口。",
+                  "Preserve the historical scope and evidence gaps."
+                ],
+                "evidence": [
+                  "A-HISTORY"
+                ]
+              }
+            ],
+            "summary": [
+              "这不是此次重制已经完成的修复清单，而是交给两条候选的历史教训。",
+              "These are lessons for the candidates, not repairs claimed as completed by this remake."
+            ]
+          }
+        ],
+        "edge_types": {
+          "derive": [
+            "源码适配/继续实现",
+            "Source adaptation/continuation"
+          ],
+          "requirements": [
+            "复用需求，不继承旧源码",
+            "Requirements reuse, not old source"
+          ],
+          "repair": [
+            "同分支大修与回归",
+            "Major in-branch repair/regression"
+          ],
+          "review": [
+            "输入评审，不是合并代码",
+            "Review input, not a code merge"
+          ],
+          "select": [
+            "选择主线",
+            "Mainline selection"
+          ],
+          "retain": [
+            "保留对照",
+            "Retained comparison"
+          ],
+          "future": [
+            "尚未完成",
+            "Not yet completed"
+          ]
+        },
+        "no_merge_statement": [
+          "现在仅完成资料与HUB准备；两条重制没有代码，没有QA结果，也未选择主线。",
+          "Only records/HUB preparation is complete. Neither remake has code or QA results, and no mainline is selected."
+        ],
+        "sources": {
+          "A-HISTORY": {
+            "path": "DEVLOG.md",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "a5595efcf5b4f0b76700a106ce5db3e08af728d679c5b6d54c4d66c51f28cce6",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/DEVLOG.md",
+            "title": [
+              "DEVLOG.md",
+              "DEVLOG.md"
+            ]
+          },
+          "A-README": {
+            "path": "README.md",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "700c5767d268ee88920916e8eff6d5c4d7943b58fff5d0d7e75727483f3979a8",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/README.md",
+            "title": [
+              "README.md",
+              "README.md"
+            ]
+          },
+          "A-MAGIC": {
+            "path": "src/magic.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/magic.js",
+            "title": [
+              "src/magic.js",
+              "src/magic.js"
+            ]
+          },
+          "A-CREATURES": {
+            "path": "src/creatures.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/creatures.js",
+            "title": [
+              "src/creatures.js",
+              "src/creatures.js"
+            ]
+          },
+          "A-DAYNIGHT": {
+            "path": "src/daynight.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/daynight.js",
+            "title": [
+              "src/daynight.js",
+              "src/daynight.js"
+            ]
+          },
+          "A-MONSTERS": {
+            "path": "src/monsters.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/monsters.js",
+            "title": [
+              "src/monsters.js",
+              "src/monsters.js"
+            ]
+          },
+          "A-WALK": {
+            "path": "src/walk.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/walk.js",
+            "title": [
+              "src/walk.js",
+              "src/walk.js"
+            ]
+          },
+          "A-SAVE": {
+            "path": "src/storage.js",
+            "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+            "sha256": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+            "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/storage.js",
+            "title": [
+              "src/storage.js",
+              "src/storage.js"
+            ]
+          },
+          "PREP": {
+            "path": "hub/preparation.json",
+            "source_ref": null,
+            "sha256": null,
+            "href": "preparation.json",
+            "title": [
+              "本轮准备清单",
+              "This preparation manifest"
+            ]
+          }
+        }
+      },
+      "governance_sources": {
+        "A-HISTORY": {
+          "path": "DEVLOG.md",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "a5595efcf5b4f0b76700a106ce5db3e08af728d679c5b6d54c4d66c51f28cce6",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/DEVLOG.md",
+          "title": [
+            "DEVLOG.md",
+            "DEVLOG.md"
+          ]
+        },
+        "A-README": {
+          "path": "README.md",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "700c5767d268ee88920916e8eff6d5c4d7943b58fff5d0d7e75727483f3979a8",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/README.md",
+          "title": [
+            "README.md",
+            "README.md"
+          ]
+        },
+        "A-MAGIC": {
+          "path": "src/magic.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "a27768062a78e04f503e81d05313583d2e84e0ed15709cdf7e3e195dd5a9a99c",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/magic.js",
+          "title": [
+            "src/magic.js",
+            "src/magic.js"
+          ]
+        },
+        "A-CREATURES": {
+          "path": "src/creatures.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "e7e75fa0297a3fc6095966795ed6b13f5f824a61581f66569ec2cb127e41db8e",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/creatures.js",
+          "title": [
+            "src/creatures.js",
+            "src/creatures.js"
+          ]
+        },
+        "A-DAYNIGHT": {
+          "path": "src/daynight.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "f8703b0e1770b738af668c51af0cebded66a92d02dcbd65fed4900419cddd301",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/daynight.js",
+          "title": [
+            "src/daynight.js",
+            "src/daynight.js"
+          ]
+        },
+        "A-MONSTERS": {
+          "path": "src/monsters.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "5e03c1c5b9eab5e49a70651e5d1014d5c8cd206c2197cbdda544343fac5b2fa7",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/monsters.js",
+          "title": [
+            "src/monsters.js",
+            "src/monsters.js"
+          ]
+        },
+        "A-WALK": {
+          "path": "src/walk.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "28ea33d02b772f5b62859576c883b36fa66ffebf6aa98e4e3805265bdf54c844",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/walk.js",
+          "title": [
+            "src/walk.js",
+            "src/walk.js"
+          ]
+        },
+        "A-SAVE": {
+          "path": "src/storage.js",
+          "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+          "sha256": "86c2f5f9b8d1dc7fbbc68459c1a3df400bf4c4c4174a31a1291a85d14460a707",
+          "href": "https://github.com/sydneygemstone-sudo/aidan-minecraft-web/blob/2b22154fc5e10f3a85c2025171f9e3a99735c93c/src/storage.js",
+          "title": [
+            "src/storage.js",
+            "src/storage.js"
+          ]
+        },
+        "PREP": {
+          "path": "hub/preparation.json",
+          "source_ref": null,
+          "sha256": null,
+          "href": "preparation.json",
+          "title": [
+            "本轮准备清单",
+            "This preparation manifest"
+          ]
+        }
+      },
+      "questions": [
+        [
+          "让魔法改变世界的哪个瞬间最值得留下？请演示一次。",
+          "Which moment of magic changing the world matters most? Demonstrate it."
+        ],
+        [
+          "新版第一分钟希望玩家完成什么小目标？不要只说“更好玩”。",
+          "What small goal should a player complete in minute one? Be more specific than “more fun”."
+        ],
+        [
+          "火焰、食物、夜晚怪物之间，哪个选择应该让玩家认真想一下？",
+          "Which choice between fire, food and night monsters should require thought?"
+        ]
+      ],
+      "requirements": [
+        [
+          [
+            "魔法要改变世界，不只是漂亮",
+            "Magic must change the world, not just look pretty"
+          ],
+          [
+            "保留火球点燃可燃物、火遇水熄灭产生蒸汽；火会造成危险，有明确反馈。",
+            "Retain fireballs igniting flammable blocks, water extinguishing fire into steam, and readable danger/feedback."
+          ]
+        ],
+        [
+          [
+            "抓鱼 → 烤鱼 → 吃鱼",
+            "Catch → cook → eat"
+          ],
+          [
+            "水里要有看得见且可互动的生命；抓鱼、放下、烤熟、拾取、食用与生命/移动效果互相连接。",
+            "Water needs visible interactive life; catching, placing, cooking, collecting and eating connect to health/movement effects."
+          ]
+        ],
+        [
+          [
+            "昼夜有区别，但动物不消失",
+            "Day and night differ, without deleting animals"
+          ],
+          [
+            "太阳白天、月亮夜间；晚上出现怪物，魔法能打怪；鱼与小鸡保持存在，浆果可采集。",
+            "Sun by day, moon by night; monsters appear at night and respond to magic; fish/chickens persist and berries are collectable."
+          ]
+        ],
+        [
+          [
+            "保留自由创造与可靠存档",
+            "Keep creative building and dependable saves"
+          ],
+          [
+            "保留飞行、挖掘、放置、方块库及保存/导入导出。先复现已有目标，不额外承诺所有Minecraft机制。",
+            "Retain flight, mining, placement, inventory and save/import/export. Recreate established goals, not every Minecraft mechanic."
+          ]
+        ]
+      ],
+      "remake": {
+        "requirements": [
+          {
+            "id": "A-01",
+            "title": [
+              "魔法要改变世界，不只是漂亮",
+              "Magic must change the world, not just look pretty"
+            ],
+            "detail": [
+              "保留火球点燃可燃物、火遇水熄灭产生蒸汽；火会造成危险，有明确反馈。",
+              "Retain fireballs igniting flammable blocks, water extinguishing fire into steam, and readable danger/feedback."
+            ],
+            "acceptance": [
+              "正常操作分别验证烧木、遇水、站在火边受伤和恢复。",
+              "Use normal actions to test burning wood, water contact, fire damage and recovery."
+            ]
+          },
+          {
+            "id": "A-02",
+            "title": [
+              "抓鱼 → 烤鱼 → 吃鱼",
+              "Catch → cook → eat"
+            ],
+            "detail": [
+              "水里要有看得见且可互动的生命；抓鱼、放下、烤熟、拾取、食用与生命/移动效果互相连接。",
+              "Water needs visible interactive life; catching, placing, cooking, collecting and eating connect to health/movement effects."
+            ],
+            "acceptance": [
+              "从零获得一条鱼，用正常操作走完整条食物循环。",
+              "Obtain a fish from scratch and complete the food loop through normal play."
+            ]
+          },
+          {
+            "id": "A-03",
+            "title": [
+              "昼夜有区别，但动物不消失",
+              "Day and night differ, without deleting animals"
+            ],
+            "detail": [
+              "太阳白天、月亮夜间；晚上出现怪物，魔法能打怪；鱼与小鸡保持存在，浆果可采集。",
+              "Sun by day, moon by night; monsters appear at night and respond to magic; fish/chickens persist and berries are collectable."
+            ],
+            "acceptance": [
+              "切换昼夜确认日月、怪物、动物与资源各自的状态；不把白天清怪误写成删掉所有生物。",
+              "Switch day/night and verify celestial, monster, animal and resource states separately."
+            ]
+          },
+          {
+            "id": "A-04",
+            "title": [
+              "保留自由创造与可靠存档",
+              "Keep creative building and dependable saves"
+            ],
+            "detail": [
+              "保留飞行、挖掘、放置、方块库及保存/导入导出。先复现已有目标，不额外承诺所有Minecraft机制。",
+              "Retain flight, mining, placement, inventory and save/import/export. Recreate established goals, not every Minecraft mechanic."
+            ],
+            "acceptance": [
+              "搭一个小结构、保存、刷新、导出再导入，验证没有误删旧版存档。",
+              "Build a small structure, save, reload and export/import without deleting baseline saves."
+            ]
+          }
+        ],
+        "scope_out": [
+          "不把“挖穿基岩”当作新增玩法；不无限复制Minecraft；不擅加多人云服、商城或完整美术资产生产。",
+          "No bedrock-digging feature for its own sake, unlimited Minecraft parity, unrequested cloud multiplayer, store or full asset production."
+        ],
+        "tests": [
+          [
+            "首次进入能理解目标并完成核心动作；不靠调试开关跳过正常流程。",
+            "A first-time player understands the goal and performs the core actions without debug shortcuts."
+          ],
+          [
+            "iPad无键盘、键盘无鼠标两种输入分别验收；拖出、取消、旋转后不粘键。",
+            "Verify keyboard-free iPad and mouse-free keyboard play; release, cancellation and rotation must not leave movement stuck."
+          ],
+          [
+            "中英切换按钮常驻，中文显示English、英文显示中文；不丢进度与表单内容。",
+            "Persistent target-language button: English in Chinese, 中文 in English; preserve progress and form content."
+          ],
+          [
+            "直接单机试玩、返回本作品HUB、独立存档与可重开；不能影响旧版或另一候选。",
+            "Direct solo play, return to this HUB, independent saves and restart; do not alter the baseline or other candidate."
+          ],
+          [
+            "源文件、实际用量或有依据的估算、测试结果及失败记录一并交回；不能把历史报告当本次测试。",
+            "Return source, metered usage or explicit estimates, tests and failures; do not reuse historical reports as new acceptance."
+          ],
+          [
+            "最终正常流程与实际设备测试通过后才冻结MVP；本轮不自动进入完整资产、销售和长期运营。",
+            "Freeze the MVP only after normal-path/device acceptance; do not silently start full asset production, sales or long-term operations."
+          ]
+        ]
+      },
+      "journey": [
+        {
+          "id": "initial",
+          "date": "2026-09-12",
+          "title": [
+            "从想做Minecraft，收敛到创造与分享",
+            "From Minecraft inspiration to creation and sharing"
+          ],
+          "summary": [
+            "原方向是飞行建造、挖掘放置、方块库与建筑存档。",
+            "The original scope was flying/building, mining/placing, inventory and saved creations."
+          ],
+          "brief": [
+            "原方向是飞行建造、挖掘放置、方块库与建筑存档。",
+            "The original scope was flying/building, mining/placing, inventory and saved creations."
+          ],
+          "tool": [
+            "课堂需求 → 实现 → 反馈 → 修订；此处为已有记录归纳。",
+            "Class requirements → implementation → feedback → revision; reconstructed from existing records."
+          ],
+          "tech": [
+            "程序化像素图集、隐藏面剔除、AABB碰撞和JSON存档。",
+            "Procedural texture atlas, face culling, AABB collision and JSON saves."
+          ],
+          "result": [
+            "留下可玩的体素原型；历史帧率自述不作为本轮实测结论。",
+            "An operable voxel prototype; historical frame-rate claims are not fresh measurements."
+          ],
+          "source": "A-HISTORY",
+          "status": "done"
+        },
+        {
+          "id": "input",
+          "date": "2026-09-12",
+          "title": [
+            "实际设备改变输入需求",
+            "Real devices change input requirements"
+          ],
+          "summary": [
+            "记录中有iPad打不开、没有带鼠标两项反馈。",
+            "Notes report trouble opening on iPad and a missing mouse."
+          ],
+          "brief": [
+            "记录中有iPad打不开、没有带鼠标两项反馈。",
+            "Notes report trouble opening on iPad and a missing mouse."
+          ],
+          "tool": [
+            "课堂需求 → 实现 → 反馈 → 修订；此处为已有记录归纳。",
+            "Class requirements → implementation → feedback → revision; reconstructed from existing records."
+          ],
+          "tech": [
+            "将开发服务器与成品静态资源分开，按输入设备验证。",
+            "Separate development server and production static assets; test each input device."
+          ],
+          "result": [
+            "补触屏与纯键盘操控；局域网静态分发与多人同步不是一回事。",
+            "Touch and mouse-free keyboard controls added; static LAN delivery is not multiplayer synchronization."
+          ],
+          "source": "A-HISTORY",
+          "status": "done"
+        },
+        {
+          "id": "magic",
+          "date": "2026-09-19",
+          "title": [
+            "水里什么都没有 → 魔法食物循环",
+            "Empty water → magic and food loop"
+          ],
+          "summary": [
+            "Aidan喜欢飞行和创造，但水域缺少内容；讨论后放弃无目标的挖穿基岩。",
+            "Aidan liked flight/creation but found water empty; purposeless bedrock digging was dropped."
+          ],
+          "brief": [
+            "Aidan喜欢飞行和创造，但水域缺少内容；讨论后放弃无目标的挖穿基岩。",
+            "Aidan liked flight/creation but found water empty; purposeless bedrock digging was dropped."
+          ],
+          "tool": [
+            "课堂需求 → 实现 → 反馈 → 修订；此处为已有记录归纳。",
+            "Class requirements → implementation → feedback → revision; reconstructed from existing records."
+          ],
+          "tech": [
+            "粒子与小步长碰撞、燃烧队列、蒸汽反馈和资源状态转换。",
+            "Particles/substep collisions, burning queues, steam feedback and resource-state changes."
+          ],
+          "result": [
+            "加入火焰、水下鱼与抓烤吃循环。仓库日志称27项冒烟通过；原测试报告未附在该仓库。",
+            "Added fire, fish and catch/cook/eat. The log claims 27 smoke checks; the raw report is not in this repository."
+          ],
+          "source": "A-HISTORY",
+          "status": "done"
+        },
+        {
+          "id": "ecology",
+          "date": "2026-09-19",
+          "title": [
+            "日月交替、怪物和不消失的动物",
+            "Day/night, monsters and persistent animals"
+          ],
+          "summary": [
+            "补日月规律、夜间威胁、浆果与跟随小鸡，动物不随怪物清理。",
+            "Add celestial rules, night threats, berries and following chickens; ordinary animals survive monster cleanup."
+          ],
+          "brief": [
+            "补日月规律、夜间威胁、浆果与跟随小鸡，动物不随怪物清理。",
+            "Add celestial rules, night threats, berries and following chickens; ordinary animals survive monster cleanup."
+          ],
+          "tool": [
+            "课堂需求 → 实现 → 反馈 → 修订；此处为已有记录归纳。",
+            "Class requirements → implementation → feedback → revision; reconstructed from existing records."
+          ],
+          "tech": [
+            "按脚下方块与一格台阶判定走路，替换把树冠当地面的高度判断。",
+            "Use foot-level blocks and one-block steps instead of treating treetops as walkable ground."
+          ],
+          "result": [
+            "形成当前基线；日志中的63项测试合计作为历史报告，不冒称本轮重跑。",
+            "Current baseline established; the reported 63 checks remain historical, not a new rerun."
+          ],
+          "source": "A-HISTORY",
+          "status": "done"
+        },
+        {
+          "id": "prep",
+          "date": "2026-09-25",
+          "title": [
+            "适配最新HUB，准备两路重制",
+            "Adapt the latest HUB and prepare two remakes"
+          ],
+          "summary": [
+            "用户指定Aidan与Hiro/Brynne各做Opus和Astra重制，本轮先完成HUB。",
+            "User specified Opus/Astra remakes for Aidan and Hiro/Brynne; this pass prepares the HUB."
+          ],
+          "brief": [
+            "用户指定Aidan与Hiro/Brynne各做Opus和Astra重制，本轮先完成HUB。",
+            "User specified Opus/Astra remakes for Aidan and Hiro/Brynne; this pass prepares the HUB."
+          ],
+          "tool": [
+            "课堂需求 → 实现 → 反馈 → 修订；此处为已有记录归纳。",
+            "Class requirements → implementation → feedback → revision; reconstructed from existing records."
+          ],
+          "tech": [
+            "当前规范组件复用、资料源指纹、未来节点虚线化。",
+            "Reuse current standard components, fingerprint sources and distinguish future nodes."
+          ],
+          "result": [
+            "两个候选入口、共同Brief、三阶段进度、历史记录和AI评语已准备；未执行重制。",
+            "Prepared candidate slots, shared brief, lifecycle, history and AI assessment; no remake executed."
+          ],
+          "source": "PREP",
+          "status": "done"
+        }
+      ],
+      "sources": [
+        {
+          "id": "A-HISTORY",
+          "label": [
+            "DEVLOG.md",
+            "DEVLOG.md"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-README",
+          "label": [
+            "README.md",
+            "README.md"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-MAGIC",
+          "label": [
+            "src/magic.js",
+            "src/magic.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-CREATURES",
+          "label": [
+            "src/creatures.js",
+            "src/creatures.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-DAYNIGHT",
+          "label": [
+            "src/daynight.js",
+            "src/daynight.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-MONSTERS",
+          "label": [
+            "src/monsters.js",
+            "src/monsters.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-WALK",
+          "label": [
+            "src/walk.js",
+            "src/walk.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "A-SAVE",
+          "label": [
+            "src/storage.js",
+            "src/storage.js"
+          ],
+          "note": [
+            "原资料固定在提交 2b22154",
+            "Source pinned to 2b22154"
+          ]
+        },
+        {
+          "id": "PREP",
+          "label": [
+            "本轮准备清单",
+            "This preparation manifest"
+          ],
+          "note": [
+            "原资料固定在提交 r6-preclass-20260926",
+            "Source pinned to r6-preclass-20260926"
+          ]
+        }
+      ],
+      "recorded_issues": [
+        [
+          "A-UI",
+          [
+            "存档与输入边界仍需新版验证",
+            "Saves and input boundaries need remake testing"
+          ],
+          [
+            "源文档给出多种键位，个别按键承担多个语义；重制时要明确优先级，不直接照抄。",
+            "Historical controls reuse some keys for multiple meanings; define precedence instead of copying blindly."
+          ],
+          [
+            "重制验收项",
+            "Remake acceptance item"
+          ]
+        ],
+        [
+          "A-EVIDENCE",
+          [
+            "旧报告和本轮证据分开",
+            "Keep historical reports separate"
+          ],
+          [
+            "日志称有27/36项自动检查，但原始结果和截图不在该仓库；本轮只核验展示与旧版启动，不自动宣称全面通过。",
+            "Logs claim 27/36 checks, but their raw reports/screenshots are absent; this pass only verifies HUB and baseline startup."
+          ],
+          [
+            "保留证据缺口",
+            "Evidence gap retained"
+          ]
+        ]
+      ],
+      "historical_context": {
+        "requirements": [
+          [
+            [
+              "魔法要改变世界，不只是漂亮",
+              "Magic must change the world, not just look pretty"
+            ],
+            [
+              "保留火球点燃可燃物、火遇水熄灭产生蒸汽；火会造成危险，有明确反馈。",
+              "Retain fireballs igniting flammable blocks, water extinguishing fire into steam, and readable danger/feedback."
+            ]
+          ],
+          [
+            [
+              "抓鱼 → 烤鱼 → 吃鱼",
+              "Catch → cook → eat"
+            ],
+            [
+              "水里要有看得见且可互动的生命；抓鱼、放下、烤熟、拾取、食用与生命/移动效果互相连接。",
+              "Water needs visible interactive life; catching, placing, cooking, collecting and eating connect to health/movement effects."
+            ]
+          ],
+          [
+            [
+              "昼夜有区别，但动物不消失",
+              "Day and night differ, without deleting animals"
+            ],
+            [
+              "太阳白天、月亮夜间；晚上出现怪物，魔法能打怪；鱼与小鸡保持存在，浆果可采集。",
+              "Sun by day, moon by night; monsters appear at night and respond to magic; fish/chickens persist and berries are collectable."
+            ]
+          ],
+          [
+            [
+              "保留自由创造与可靠存档",
+              "Keep creative building and dependable saves"
+            ],
+            [
+              "保留飞行、挖掘、放置、方块库及保存/导入导出。先复现已有目标，不额外承诺所有Minecraft机制。",
+              "Retain flight, mining, placement, inventory and save/import/export. Recreate established goals, not every Minecraft mechanic."
+            ]
+          ]
+        ],
+        "source_ref": "2b22154fc5e10f3a85c2025171f9e3a99735c93c",
+        "history_versions": [
+          [
+            "d80d7dc",
+            "2026-09-12",
+            [
+              "创造与输入基线",
+              "Creative/input baseline"
+            ]
+          ],
+          [
+            "4a57829",
+            "2026-09-19",
+            [
+              "魔法与抓烤吃",
+              "Magic and catch/cook/eat"
+            ]
+          ],
+          [
+            "2b22154",
+            "2026-09-19",
+            [
+              "昼夜与地面生态",
+              "Day/night and ground ecology"
+            ]
+          ]
+        ],
+        "old_playability_assessment": null
+      },
+      "decision": [
+        "现在只完成新HUB与需求准备。旧版用于试玩取证；Opus/Astra独立重制后再做AI评审和主线收敛，不提前宣布哪版更好。",
+        "Only the HUB/requirements preparation is complete. Play the baseline for evidence; review and converge after independent Opus/Astra deliveries, not before."
+      ],
+      "route_start": [
+        "旧版课堂需求与修订 → 同一重制Brief → Opus/Astra各自实现（待执行）→ QA与AI评审（待执行）→ MVP定稿（待完成）。",
+        "Historical requirements/revisions → shared remake brief → independent Opus/Astra (pending) → QA/AI review (pending) → MVP freeze (pending)."
+      ],
+      "snapshot_note": [
+        "历史提交保留在原仓库。当前提供最新旧版单机对照；早期日志阶段不冒充已经单独恢复的可玩发行版。",
+        "Historical commits remain in the original repository. The latest baseline is playable; early documented stages are not invented as separate playable releases."
+      ],
+      "guide": [
+        "旧版仍为原界面：移动/转向、挖掘放置、火焰R、放鱼G、吃V、昼夜T；触屏按钮随原版提供。鼠标锁定不便时用原版纯键盘入口。先保存建筑再退出。",
+        "The original UI/controls remain: movement/look, mine/place, fire R, drop fish G, eat V, day/night T; use the original touch or keyboard-only entry. Save your creation before leaving."
+      ],
+      "changes": [
+        [
+          [
+            "新HUB规范适配",
+            "Latest HUB adaptation"
+          ],
+          [
+            "复用R6与三阶段/AI评审规范，历史与未制作候选分开。",
+            "Reuse R6/lifecycle/AI-review standards; distinguish history from unbuilt candidates."
+          ]
+        ]
+      ],
+      "milestones": [
+        {
+          "name": [
+            "原需求、反馈与限制回收",
+            "Recover original requirements, feedback and limits"
+          ],
+          "status": "complete"
+        },
+        {
+          "name": [
+            "共同核心规则与验收草案",
+            "Shared core rules and acceptance draft"
+          ],
+          "status": "complete"
+        },
+        {
+          "name": [
+            "可操作 MVP 原型",
+            "Build an operable MVP"
+          ],
+          "status": "pending"
+        },
+        {
+          "name": [
+            "分支评审与主线收敛",
+            "Review branches and choose a mainline"
+          ],
+          "status": "pending"
+        },
+        {
+          "name": [
+            "试玩入口与操作适配",
+            "Adapt play entry and controls"
+          ],
+          "status": "pending"
+        },
+        {
+          "name": [
+            "自动回归、缺陷与证据归档",
+            "Automated regression and evidence"
+          ],
+          "status": "pending"
+        },
+        {
+          "name": [
+            "最终正常流程测试 → MVP 定稿",
+            "Final normal-path test → MVP freeze"
+          ],
+          "status": "pending"
+        }
+      ],
+      "milestone_evidence": [
+        [
+          "已回收",
+          "Recovered"
+        ],
+        [
+          "已回收",
+          "Recovered"
+        ],
+        [
+          "待实施",
+          "Pending"
+        ],
+        [
+          "待实施",
+          "Pending"
+        ],
+        [
+          "待实施",
+          "Pending"
+        ],
+        [
+          "待实施",
+          "Pending"
+        ],
+        [
+          "待实施",
+          "Pending"
+        ]
+      ],
+      "runtime_release": "r6-preclass-20260926"
+    }
+  }
+}

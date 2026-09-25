@@ -1,0 +1,23 @@
+flowchart TB
+  h0["创造与输入基线"]:::archive
+  h1["魔法与抓烤吃"]:::archive
+  h2["昼夜与地面生态"]:::archive
+  brief["回收需求 → 共同Brief"]:::decision
+  opus["Opus独立重制<br/>尚未开始"]:::pending
+  astra["Astra独立重制<br/>尚未开始"]:::pending
+  review["两版各自QA → AI理据评审<br/>待两版真实交付"]:::pending
+  select["主线选择 / 经批准的融合<br/>尚未发生"]:::pending
+  freeze["最终正常流程测试<br/>MVP定稿待完成"]:::pending
+  h0 -->|"已有迭代"| h1
+  h1 -->|"已有迭代"| h2
+  h2 -.->|"吸收需求，不强制继承旧代码"| brief
+  brief -.->|"计划分支A"| opus
+  brief -.->|"计划分支B"| astra
+  opus -.->|"待交付与测试"| review
+  astra -.->|"待交付与测试"| review
+  review -.->|"待证据收敛"| select
+  select -.->|"通过后固定MVP"| freeze
+classDef archive fill:#253c43,stroke:#83a49e,color:#e6ecdd
+classDef repair fill:#4b392f,stroke:#ddab77,color:#f5e7d0
+classDef decision fill:#414930,stroke:#dfc681,color:#f5e7ba
+classDef pending fill:#17303a,stroke:#809da3,color:#cadbd4,stroke-dasharray:6 4

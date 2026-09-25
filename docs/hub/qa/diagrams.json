@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "diagrams": [
+    {
+      "source": "docs/hub/lineage-lineage-zh.mmd",
+      "output": "docs/hub/lineage-lineage-zh.svg",
+      "status": "PASS"
+    },
+    {
+      "source": "docs/hub/lineage-lineage-en.mmd",
+      "output": "docs/hub/lineage-lineage-en.svg",
+      "status": "PASS"
+    },
+    {
+      "source": "docs/hub/lineage-major-repairs-zh.mmd",
+      "output": "docs/hub/lineage-major-repairs-zh.svg",
+      "status": "PASS"
+    },
+    {
+      "source": "docs/hub/lineage-major-repairs-en.mmd",
+      "output": "docs/hub/lineage-major-repairs-en.svg",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+flowchart TB
+  h0["Creative/input baseline"]:::archive
+  h1["Magic and catch/cook/eat"]:::archive
+  h2["Day/night and ground ecology"]:::archive
+  brief["Recovered requirements → shared brief"]:::decision
+  opus["Opus independent remake<br/>not started"]:::pending
+  astra["Astra independent remake<br/>not started"]:::pending
+  review["QA each → AI evidence review<br/>await actual deliveries"]:::pending
+  select["Select mainline / approved merge<br/>not yet performed"]:::pending
+  freeze["Final normal-path test<br/>MVP freeze pending"]:::pending
+  h0 -->|"Existing iteration"| h1
+  h1 -->|"Existing iteration"| h2
+  h2 -.->|"Reuse requirements, not mandatory old code"| brief
+  brief -.->|"Planned branch A"| opus
+  brief -.->|"Planned branch B"| astra
+  opus -.->|"Await delivery and QA"| review
+  astra -.->|"Await delivery and QA"| review
+  review -.->|"Await evidence-based convergence"| select
+  select -.->|"Freeze after final pass"| freeze
+classDef archive fill:#253c43,stroke:#83a49e,color:#e6ecdd
+classDef repair fill:#4b392f,stroke:#ddab77,color:#f5e7d0
+classDef decision fill:#414930,stroke:#dfc681,color:#f5e7ba
+classDef pending fill:#17303a,stroke:#809da3,color:#cadbd4,stroke-dasharray:6 4
