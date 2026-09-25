@@ -1,0 +1,46 @@
+{
+  "status": "LIVE_VERIFIED",
+  "revision": "r6-preclass-20260926",
+  "project": "aidan-minecraft-web",
+  "url": "https://sydneygemstone-sudo.github.io/aidan-minecraft-web/hub/",
+  "published_commit": "bbfe29a246468bd3eb9f7e97c2d94eecb49790d0",
+  "local_checks": 115,
+  "live_checks": 112,
+  "failures": [],
+  "checks": [
+    {
+      "path": "hub/index.html",
+      "ok": true,
+      "bytes": 991,
+      "sha256": "19e4638dc9ec7bec93dda1667a9d31680ac5f974a3cb1a08708e77e648e61cd8"
+    },
+    {
+      "path": "hub/project.json",
+      "ok": true,
+      "bytes": 86836,
+      "sha256": "4198a797d81f924ba7e8bf4035d05507b9d8cf38b51d50169cbe9621662f076e"
+    },
+    {
+      "path": "hub/rebuild.html",
+      "ok": true,
+      "bytes": 995,
+      "sha256": "cc974138d384cdd5665c4178904744bd23b52d659814d4b68a83d4033fc3febe"
+    },
+    {
+      "path": "shared/hub-r6/studio.js",
+      "ok": true,
+      "bytes": 65220,
+      "sha256": "de65646dbe5a87664c5c13694b5c2ed724962c107ac6de7b7cc11245d0c3ee0d"
+    },
+    {
+      "path": "downloads/preclass-20260926.zip",
+      "ok": true,
+      "bytes": 2695748,
+      "sha256": "a265f9cfb51645ca3efdc03b89008e7540a70efb4b2ef5a0066382bce56d07cd"
+    }
+  ],
+  "remakes": "PLANNED_NOT_STARTED",
+  "existing_game_files_unchanged": true,
+  "naomi_excluded": true,
+  "checked_at_utc": "2026-09-25T12:38:06.199401+00:00"
+}
